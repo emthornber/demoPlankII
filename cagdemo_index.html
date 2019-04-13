@@ -9,12 +9,12 @@
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
 </head>
 <meta charset="utf-8">
-<link href="canweb.css" rel="stylesheet" type="text/css">
-<script src="canweb.js"></script>
+<link href="cagdemo.css" rel="stylesheet" type="text/css">
+<script src="cagdemo.js"></script>
 <script>
     // -------------------------------------------
     // Global setup
-    systext = new scrolltext('systext', 35); // Create a store for system text
+    systext = new scrolltext('systext', 22); // Create a store for system text
     syshide = true;                         // Initially hide system text
     simmode = true;                         // Set initial simulation mode
     stopdir = true;                         // Stop before changing direction
@@ -28,353 +28,109 @@
         <!-- The main track drawing -->
         <img class="pdwg" src="cagdemoTrack.svg" style="left:0px;top:0px;">
         <!-- Software version -->
-        <div class="psys" id="sysvers" style="left:645px;top:2px;font-size:12px;"></div>
+        <div class="psys" id="sysvers" style="color:GhostWhite;left:605px;top:2px;font-size:12px;"></div>
         <!-- The system text can display the log -->
-        <div class="psys" id="systext" style="left:5px;top:10px;height:675px;width:1800px;"></div>
+        <div class="psys" id="systext" style="left:5px;top:10px;height:420px;width:780px;"></div>
         <!-- The status box displays the time/date or connection status -->
-        <div class="ptxt" id="status" onclick="statusclick();" style="left:20px;top:380px;width:1075px;height:60px;">
+        <div class="ptxt" id="status" onclick="statusclick();" style="left:0px;top:420px;width:800px;height:40px;">
             Connecting...
         </div>
         <!-- Define layout control buttons -->
-        <div class="gbut0" style="left:140px;top:275px;">
+        <div class="gbut0" style="left:5px;top:380px;">
             <div class="gbut1" onclick="sendonevent('9');">Start of Day</div>
         </div>
-        <div class="gbut0" style="left:140px;top:325px;">
+        <div class="gbut0" style="left:160px;top:380px;">
             <div class="gbut1">Test</div>
             <div class="gbut2"><img id="e8" onclick="sendtoggle('8');" src="cwgbutr0.png"></div>
         </div>
-        <div class="gbut0" style="left:140px;top:375px;">
+        <div class="gbut0" style="left:315px;top:380px;">
             <div class="gbut1">Aux Func</div>
             <div class="gbut2"><img id="e95" onclick="sendtoggle('95');" src="cwgbutg0.png"></div>
         </div>
-        <div class="gbut0" style="left:140px;top:425px;">
+        <div class="gbut0" style="left:470px;top:380px;">
             <div class="gbut1">Simulate</div>
             <div class="gbut2"><img id="a0" onclick="simbutton();" src="cwgbutg0.png"></div>
         </div>
-        <div class="sbut0" style="left:420px;top:440px;">
+        <div class="sbut0" style="left:625px;top:315px;">
             <div class="sbut3"><b>Stop<br>All</b></div>
             <div class="sbut2"><img id="a1" onclick="auxtoggle('1');" src="cwsbutr0.png"></div>
         </div>
         <!-- TURNBACK -->
         <!-- ToTI -->
-        <img class="ptot" id="e5-3"  onclick="simtoggle('5-3');" src="TrackCircuit0.svg" alt="ToTI N5E3" style="left:   0px;top:180px;">
-        <img class="ptot" id="e5-3a" onclick="simtoggle('5-3');" src="TrackCircuit0.svg" alt="ToTI N5E3" style="left:  60px;top:180px;">
-        <img class="ptot" id="e5-3b" onclick="simtoggle('5-3');" src="TrackCircuit0.svg" alt="ToTI N5E3" style="left: 120px;top:180px;">
+        <img alt="ToTI N5E3" class="ptot" id="e5-3" onclick="simtoggle('5-3');" src="TrackCircuit0.svg"
+             style="left:   0px;top:180px;">
+        <img alt="ToTI N5E3" class="ptot" id="e5-3a" onclick="simtoggle('5-3');" src="TrackCircuit0.svg"
+             style="left:  60px;top:180px;">
+        <img alt="ToTI N5E3" class="ptot" id="e5-3b" onclick="simtoggle('5-3');" src="TrackCircuit0.svg"
+             style="left: 120px;top:180px;">
         <!-- Shunt Limit -->
-        <img class="ptot" id="e5-4"  onclick="simtoggle('5-4');" src="StopBoard0.svg" alt="Spot N5E3" style="left: 0px;top:180px;">
+        <img alt="Spot N5E3" class="ptot" id="e5-4" onclick="simtoggle('5-4');" src="StopBoard0.svg"
+             style="left: 0px;top:180px;">
         <!-- Turnout Feedback -->
-        <img class="ptot" id="e5-5"  onclick="simtoggle('5-5');" src="TurnoutWyeLDnN0.svg" alt="Turnout N5E5" style="left: 180px;top:180px;">
-        <img class="ptot" id="e5-6"  onclick="simtoggle('5-6');" src="TurnoutWyeLUpR0.svg" alt="Turnout N5E6" style="left: 180px;top:180px;">
+        <img alt="Turnout N5E5" class="ptot" id="e5-5" onclick="simtoggle('5-5');" src="TurnoutWyeLDnN0.svg"
+             style="left: 180px;top:180px;">
+        <img alt="Turnout N5E6" class="ptot" id="e5-6" onclick="simtoggle('5-6');" src="TurnoutWyeLUpR0.svg"
+             style="left: 180px;top:180px;">
         <!-- Up Junction -->
         <!-- ToTI -->
-        <img class="ptot" id="e5-2"  onclick="simtoggle('5-2');" src="TrackCircuit0.svg" alt="ToTI N5E2" style="left: 240px;top:120px;">
-        <img class="ptot" id="e5-2a" onclick="simtoggle('5-2');" src="TrackCircuit0.svg" alt="ToTI N5E2" style="left: 300px;top:120px;">
+        <img alt="ToTI N5E2" class="ptot" id="e5-2" onclick="simtoggle('5-2');" src="TrackCircuit0.svg"
+             style="left: 240px;top:120px;">
+        <img alt="ToTI N5E2" class="ptot" id="e5-2a" onclick="simtoggle('5-2');" src="TrackCircuit0.svg"
+             style="left: 300px;top:120px;">
         <!-- Turnout Clipped OOU -->
-        <img class="ptot" src="TurnoutWyeRightDnWhite.svg" alt="T/O OOU" style="width:60px;height:60px;left:180px;top:120px;">
+        <img alt="T/O OOU" class="ptot" src="TurnoutWyeRightDnWhite.svg"
+             style="width:60px;height:60px;left:180px;top:120px;">
         <!-- Down Junction -->
         <!-- ToTI -->
-        <img class="ptot" id="e5-1"  onclick="simtoggle('5-1');" src="TrackCircuit0.svg" alt="ToTI N5E1" style="left: 240px;top:240px;">
-        <img class="ptot" id="e5-1a" onclick="simtoggle('5-1');" src="TrackCircuit0.svg" alt="ToTI N5E1" style="left: 300px;top:240px;">
+        <img alt="ToTI N5E1" class="ptot" id="e5-1" onclick="simtoggle('5-1');" src="TrackCircuit0.svg"
+             style="left: 240px;top:240px;">
+        <img alt="ToTI N5E1" class="ptot" id="e5-1a" onclick="simtoggle('5-1');" src="TrackCircuit0.svg"
+             style="left: 300px;top:240px;">
         <!-- Turnout Clipped OOU -->
-        <img class="ptot" src="TurnoutWyeRightUpWhite.svg" alt="T/O OOU" style="width:60px;height:60px;left:180px;top:240px;">
+        <img alt="T/O OOU" class="ptot" src="TurnoutWyeRightUpWhite.svg"
+             style="width:60px;height:60px;left:180px;top:240px;">
         <!-- STATION -->
         <!-- Up ToTI -->
-        <img class="ptot" id="e6-2"  onclick="simtoggle('6-2');" src="TrackCircuit0.svg" alt="ToTI N6E2" style="left: 360px;top:120px;">
-        <img class="ptot" id="e6-2a" onclick="simtoggle('6-2');" src="TrackCircuit0.svg" alt="ToTI N6E2" style="left: 420px;top:120px;">
+        <img alt="ToTI N6E2" class="ptot" id="e6-2" onclick="simtoggle('6-2');" src="TrackCircuit0.svg"
+             style="left: 360px;top:120px;">
+        <img alt="ToTI N6E2" class="ptot" id="e6-2a" onclick="simtoggle('6-2');" src="TrackCircuit0.svg"
+             style="left: 420px;top:120px;">
         <!-- Up Platform Stop -->
-        <img class="ptot" id="e6-3"  onclick="simtoggle('6-3');" src="StopBoard0.svg" alt="Spot N6E3" style="left: 420px;top:120px;">
+        <img alt="Spot N6E3" class="ptot" id="e6-3" onclick="simtoggle('6-3');" src="StopBoard0.svg"
+             style="left: 420px;top:120px;">
         <!-- Down ToTI -->
-        <img class="ptot" id="e6-1"  onclick="simtoggle('6-1');" src="TrackCircuit0.svg" alt="ToTI N6E1" style="left: 360px;top:240px;">
-        <img class="ptot" id="e6-1a" onclick="simtoggle('6-1');" src="TrackCircuit0.svg" alt="ToTI N6E1" style="left: 420px;top:240px;">
+        <img alt="ToTI N6E1" class="ptot" id="e6-1" onclick="simtoggle('6-1');" src="TrackCircuit0.svg"
+             style="left: 360px;top:240px;">
+        <img alt="ToTI N6E1" class="ptot" id="e6-1a" onclick="simtoggle('6-1');" src="TrackCircuit0.svg"
+             style="left: 420px;top:240px;">
         <!-- Up Platform Stop -->
-        <img class="ptot" id="e6-4"  onclick="simtoggle('6-4');" src="StopBoard0.svg" alt="Spot N6E4" style="left: 240px;top:240px;">
+        <img alt="Spot N6E4" class="ptot" id="e6-4" onclick="simtoggle('6-4');" src="StopBoard0.svg"
+             style="left: 240px;top:240px;">
         <!-- Fiddle Yard -->
         <!-- ToTI -->
-        <img class="ptot" id="e7-3"  onclick="simtoggle('7-3');" src="TrackCircuitSW0.svg" alt="ToTI N7E3" style="left: 480px;top:120px;">
-        <img class="ptot" id="e7-3a" onclick="simtoggle('7-3');" src="TrackCircuitNE0.svg" alt="ToTI N7E3" style="left: 480px;top:180px;">
-        <img class="ptot" id="e7-3b" onclick="simtoggle('7-3');" src="TrackCircuit0.svg"   alt="ToTI N7E3" style="left: 480px;top:240px;">
-        <img class="ptot" id="e7-3c" onclick="simtoggle('7-3');" src="TrackCircuitSW0.svg" alt="ToTI N7E3" style="left: 540px;top:180px;">
-        <img class="ptot" id="e7-3d" onclick="simtoggle('7-3');" src="TrackCircuit0.svg"   alt="ToTI N7E3" style="left: 600px;top:240px;">
-        <img class="ptot" id="e7-3e" onclick="simtoggle('7-3');" src="TrackCircuit0.svg"   alt="ToTI N7E3" style="left: 660px;top:240px;">
-        <img class="ptot" id="e7-3f" onclick="simtoggle('7-3');" src="TrackCircuit0.svg"   alt="ToTI N7E3" style="left: 720px;top:240px;">
+        <img alt="ToTI N7E3" class="ptot" id="e7-3" onclick="simtoggle('7-3');" src="TrackCircuitSW0.svg"
+             style="left: 480px;top:120px;">
+        <img alt="ToTI N7E3" class="ptot" id="e7-3a" onclick="simtoggle('7-3');" src="TrackCircuitNE0.svg"
+             style="left: 480px;top:180px;">
+        <img alt="ToTI N7E3" class="ptot" id="e7-3b" onclick="simtoggle('7-3');" src="TrackCircuit0.svg"
+             style="left: 480px;top:240px;">
+        <img alt="ToTI N7E3" class="ptot" id="e7-3c" onclick="simtoggle('7-3');" src="TrackCircuitSW0.svg"
+             style="left: 540px;top:180px;">
+        <img alt="ToTI N7E3" class="ptot" id="e7-3d" onclick="simtoggle('7-3');" src="TrackCircuit0.svg"
+             style="left: 600px;top:240px;">
+        <img alt="ToTI N7E3" class="ptot" id="e7-3e" onclick="simtoggle('7-3');" src="TrackCircuit0.svg"
+             style="left: 660px;top:240px;">
+        <img alt="ToTI N7E3" class="ptot" id="e7-3f" onclick="simtoggle('7-3');" src="TrackCircuit0.svg"
+             style="left: 720px;top:240px;">
         <!-- Shunt Limit -->
-        <img class="ptot" id="e7-4"  onclick="simtoggle('7-4');" src="StopBoard0.svg" alt="Spot N7E3" style="left: 720px;top:240px;">
+        <img alt="Spot N7E3" class="ptot" id="e7-4" onclick="simtoggle('7-4');" src="StopBoard0.svg"
+             style="left: 720px;top:240px;">
         <!-- Turnout Feedback -->
-        <img class="ptot" id="e7-1"  onclick="simtoggle('7-1');" src="TurnoutRightNormal0.svg"  alt="Turnout N7E1" style="left: 540px;top:240px;">
-        <img class="ptot" id="e7-2"  onclick="simtoggle('7-2');" src="TurnoutRightReverse0.svg" alt="Turnout N7E2" style="left: 540px;top:240px;">
-   </div>
-    <!-- Throttle 1 ('x') -->
-    <div class="throt">
-        <div class="tsel" onclick="locoselectclick('x');">
-            <img class="tsel0" id="locix" src="loco_none.png">
-            <div class="tsel1" id="locox"><b>Select Loco</b></div>
-            <div class="tsel2" id="addrx"></div>
-        </div>
-        <div class="tgaph"></div>
-        <div class="tdir" id="bx29">
-            <div class="tdir1"><img id="fx29" onclick="locodirectionclick('x',true);" src="cwdirc0.png"></div>
-            <div class="tdir2" id="lspdx">0</div>
-        </div>
-        <div class="tgaph"></div>
-        <div class="tspd" id="bx31">
-            <input id="speedx" max="128" min="0" oninput="locospeedchange('x',this.value)"
-                   style="height:100%;width:100%;background-color:oldlace;" type="range">
-        </div>
-        <table class="tfnc">
-            <tr>
-                <td class="tfnc1" id="bx0">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tx0">F0</div>
-                        <div class="tfnc4"><img id="fx0" onclick="locofuncclick('x0');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bx2">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tx2">F2</div>
-                        <div class="tfnc4"><img id="fx2" onclick="locofuncclick('x2');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bx4">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tx4">F4</div>
-                        <div class="tfnc4"><img id="fx4" onclick="locofuncclick('x4');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bx6">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tx6">F6</div>
-                        <div class="tfnc4"><img id="fx6" onclick="locofuncclick('x6');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bx8">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tx8">F8</div>
-                        <div class="tfnc4"><img id="fx8" onclick="locofuncclick('x8');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="tfnc1" id="bx1">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tx1">F1</div>
-                        <div class="tfnc4"><img id="fx1" onclick="locofuncclick('x1');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bx3">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tx3">F3</div>
-                        <div class="tfnc4"><img id="fx3" onclick="locofuncclick('x3');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bx5">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tx5">F5</div>
-                        <div class="tfnc4"><img id="fx5" onclick="locofuncclick('x5');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bx7">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tx7">F7</div>
-                        <div class="tfnc4"><img id="fx7" onclick="locofuncclick('x7');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bx9">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tx9">F9</div>
-                        <div class="tfnc4"><img id="fx9" onclick="locofuncclick('x9');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        <div class="tgapr"></div>
-        <div class="tstp" id="bx30">
-            <div class="tstp1"><b>Stop</b></div>
-            <div class="tstp2"><img id="fx30" onclick="locostopclick('x');" src="cwsbutr0.png"></div>
-        </div>
+        <img alt="Turnout N7E1" class="ptot" id="e7-1" onclick="simtoggle('7-1');" src="TurnoutRightNormal0.svg"
+             style="left: 540px;top:240px;">
+        <img alt="Turnout N7E2" class="ptot" id="e7-2" onclick="simtoggle('7-2');" src="TurnoutRightReverse0.svg"
+             style="left: 540px;top:240px;">
     </div>
-    <div class="tgapv"></div>
-    <!-- Throttle 2 ('y') -->
-    <div class="throt">
-        <div class="tsel" onclick="locoselectclick('y');">
-            <img class="tsel0" id="lociy" src="loco_none.png">
-            <div class="tsel1" id="locoy"><b>Select Loco</b></div>
-            <div class="tsel2" id="addry"></div>
-        </div>
-        <div class="tgaph"></div>
-        <div class="tdir" id="by29">
-            <div class="tdir1"><img id="fy29" onclick="locodirectionclick('y',true);" src="cwdirc0.png"></div>
-            <div class="tdir2" id="lspdy">0</div>
-        </div>
-        <div class="tgaph"></div>
-        <div class="tspd" id="by31">
-            <input id="speedy" max="128" min="0" oninput="locospeedchange('y',this.value)"
-                   style="height:100%; width:100%; background-color:oldlace;" type="range">
-        </div>
-        <table class="tfnc">
-            <tr>
-                <td class="tfnc1" id="by0">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="ty0">F0</div>
-                        <div class="tfnc4"><img id="fy0" onclick="locofuncclick('y0');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="by2">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="ty2">F2</div>
-                        <div class="tfnc4"><img id="fy2" onclick="locofuncclick('y2');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="by4">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="ty4">F4</div>
-                        <div class="tfnc4"><img id="fy4" onclick="locofuncclick('y4');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="by6">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="ty6">F6</div>
-                        <div class="tfnc4"><img id="fy6" onclick="locofuncclick('y6');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="by8">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="ty8">F8</div>
-                        <div class="tfnc4"><img id="fy8" onclick="locofuncclick('y8');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="tfnc1" id="by1">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="ty1">F1</div>
-                        <div class="tfnc4"><img id="fy1" onclick="locofuncclick('y1');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="by3">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="ty3">F3</div>
-                        <div class="tfnc4"><img id="fy3" onclick="locofuncclick('y3');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="by5">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="ty5">F5</div>
-                        <div class="tfnc4"><img id="fy5" onclick="locofuncclick('y5');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="by7">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="ty7">F7</div>
-                        <div class="tfnc4"><img id="fy7" onclick="locofuncclick('y7');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="by9">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="ty9">F9</div>
-                        <div class="tfnc4"><img id="fy9" onclick="locofuncclick('y9');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        <div class="tgapr"></div>
-        <div class="tstp" id="by30">
-            <div class="tstp1"><b>Stop</b></div>
-            <div class="tstp2"><img id="fy30" onclick="locostopclick('y');" src="cwsbutr0.png"></div>
-        </div>
-    </div>
-    <div class="tgapv"></div>
-    <!-- Throttle 3 ('z') -->
-    <div class="throt">
-        <div class="tsel" onclick="locoselectclick('z');">
-            <img class="tsel0" id="lociz" src="loco_none.png">
-            <div class="tsel1" id="locoz"><b>Select Loco</b></div>
-            <div class="tsel2" id="addrz"></div>
-        </div>
-        <div class="tgaph"></div>
-        <div class="tdir" id="bz29">
-            <div class="tdir1"><img id="fz29" onclick="locodirectionclick('z',true);" src="cwdirc0.png"></div>
-            <div class="tdir2" id="lspdz">0</div>
-        </div>
-        <div class="tgaph"></div>
-        <div class="tspd" id="bz31">
-            <input id="speedz" max="128" min="0" oninput="locospeedchange('z',this.value)"
-                   style="height:100%; width:100%; background-color:oldlace;" type="range">
-        </div>
-        <table class="tfnc">
-            <tr>
-                <td class="tfnc1" id="bz0">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tz0">F0</div>
-                        <div class="tfnc4"><img id="fz0" onclick="locofuncclick('z0');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bz2">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tz2">F2</div>
-                        <div class="tfnc4"><img id="fz2" onclick="locofuncclick('z2');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bz4">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tz4">F4</div>
-                        <div class="tfnc4"><img id="fz4" onclick="locofuncclick('z4');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bz6">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tz6">F6</div>
-                        <div class="tfnc4"><img id="fz6" onclick="locofuncclick('z6');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bz8">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tz8">F8</div>
-                        <div class="tfnc4"><img id="fz8" onclick="locofuncclick('z8');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="tfnc1" id="bz1">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tz1">F1</div>
-                        <div class="tfnc4"><img id="fz1" onclick="locofuncclick('z1');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bz3">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tz3">F3</div>
-                        <div class="tfnc4">
-                            <img id="fz3" onclick="locofuncclick('z3');" src="cwfbutg0.png">
-                        </div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bz5">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tz5">F5</div>
-                        <div class="tfnc4"><img id="fz5" onclick="locofuncclick('z5');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bz7">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tz7">F7</div>
-                        <div class="tfnc4"><img id="fz7" onclick="locofuncclick('z7');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-                <td class="tfnc1" id="bz9">
-                    <div class="tfnc2">
-                        <div class="tfnc3" id="tz9">F9</div>
-                        <div class="tfnc4"><img id="fz9" onclick="locofuncclick('z9');" src="cwfbutg0.png"></div>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        <div class="tgapr"></div>
-        <div class="tstp" id="bz30">
-            <div class="tstp1"><b>Stop</b></div>
-            <div class="tstp2"><img id="fz30" onclick="locostopclick('z');" src="cwsbutr0.png"></div>
-        </div>
-    </div>
-    <!-- Initially Invisible Panel for Selection -->
     <div id="overlay">
     </div>
 </div>
