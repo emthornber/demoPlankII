@@ -1,8 +1,9 @@
-﻿<!-- CANWEB CAG Demo layout HTML
-08-Apr-19 EMT Created from Sample file
+﻿<!-- CANWEB CAG Demo HTML
+	11 April, 2019 - E M Thornber
+	Created from config_index.html
 -->
 <!DOCTYPE html>
-<html lang="ENGLISH">
+<html>
 <head>
     <title>CANWEB CAG Demo Railway</title>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
@@ -25,13 +26,13 @@
 <div class="cont" style="width:800px;left:0px;top:0px;">
     <div class="panl" style="height:480px;">
         <!-- The main track drawing -->
-        <img class="pdwg" src="TurnbackTrack.png" style="left:0px;top:34px;">
+        <img class="pdwg" src="cagdemoTrack.svg" style="left:0px;top:0px;">
         <!-- Software version -->
-        <div class="psys" id="sysvers" style="left:1745px;top:2px;font-size:12px;"></div>
+        <div class="psys" id="sysvers" style="left:645px;top:2px;font-size:12px;"></div>
         <!-- The system text can display the log -->
         <div class="psys" id="systext" style="left:5px;top:10px;height:675px;width:1800px;"></div>
         <!-- The status box displays the time/date or connection status -->
-        <div class="ptxt" id="status" onclick="statusclick();" style="left:720px;top:380px;width:1075px;height:60px;">
+        <div class="ptxt" id="status" onclick="statusclick();" style="left:20px;top:380px;width:1075px;height:60px;">
             Connecting...
         </div>
         <!-- Define layout control buttons -->
@@ -55,79 +56,24 @@
             <div class="sbut2"><img id="a1" onclick="auxtoggle('1');" src="cwsbutr0.png"></div>
         </div>
         <!-- Top Half -->
-        <img class="ptot" id="e51" onclick="simtoggle('51');" src="cwtoti080.png" style="left:  15px;top: 37px;">
-        <img class="ptot" id="e52" onclick="simtoggle('52');" src="cwtoti080.png" style="left:  15px;top: 95px;">
-        <img class="ptot" id="e53" onclick="simtoggle('53');" src="cwtoti080.png" style="left:  15px;top:154px;">
-        <img class="ptot" id="e54" onclick="simtoggle('54');" src="cwtoti080.png" style="left:  15px;top:212px;">
-        <img class="psig" id="e116" onclick="sendtoggle('16','116');" src="cwsignl0.png" style="left: 265px;top: 50px;">
-        <img class="psig" id="e117" onclick="sendtoggle('17','117');" src="cwsignl0.png" style="left: 265px;top: 78px;">
-        <img class="psig" id="e118" onclick="sendtoggle('18','118');" src="cwsignl0.png" style="left: 265px;top:167px;">
-        <img class="psig" id="e119" onclick="sendtoggle('19','119');" src="cwsignl0.png" style="left: 265px;top:194px;">
-        <img class="pbut" id="e12" onclick="sendtoggle('12');" src="cwpointtl0.png" style="left: 308px;top: 37px;">
-        <img class="pbut" id="e11" onclick="sendtoggle('11');" src="cwpointdu0.png" style="left: 308px;top:154px;">
-        <img class="ptot" id="e55" onclick="simtoggle('55');" src="cwtoti040.png" style="left: 604px;top: 37px;">
-        <img class="ptot" id="e56" onclick="simtoggle('56');" src="cwtoti100.png" style="left: 430px;top: 95px;">
-        <img class="ptot" id="e56a" onclick="simtoggle('56');" src="cwtoti030.png" style="left: 817px;top: 37px;">
-        <img class="ptot" id="e57" onclick="simtoggle('57');" src="cwtoti120.png" style="left: 430px;top:154px;">
-        <img class="ptot" id="e57a" onclick="simtoggle('57');" src="cwtoti020.png" style="left: 846px;top: 95px;">
-        <img class="ptot" id="e62" onclick="simtoggle('62');" src="cwtoti140.png" style="left: 430px;top:212px;">
-        <img class="ptot" id="e62a" onclick="simtoggle('62');" src="cwtoti120.png" style="left: 835px;top:212px;">
-        <img class="ptot" id="e61" onclick="simtoggle('61');" src="cwtoti120.png" style="left: 749px;top:279px;">
-        <img class="ptot" id="e58" onclick="simtoggle('58');" src="cwtoti120.png" style="left: 749px;top:337px;">
-        <img class="pbut" id="e13" onclick="sendtoggle('13');" src="cwpointblr0.png" style="left: 710px;top: 37px;">
-        <img class="psig" id="e126" onclick="sendtoggle('26','126');" src="cwsignl0.png" style="left: 846px;top: 12px;">
-        <img class="pbut" id="e14" onclick="sendtoggle('14');" src="cwpointdd0.png" style="left: 895px;top: 37px;">
-        <img class="psig" id="e127" onclick="sendtoggle('27','127');" src="cwsignr0.png" style="left: 998px;top:116px;">
-        <img class="ptot" id="e63" onclick="simtoggle('63');" src="cwtoti100.png" style="left:1016px;top: 37px;">
-        <img class="ptot" id="e63a" onclick="simtoggle('63');" src="cwtoti060.png" style="left:1306px;top: 37px;">
-        <img class="ptot" id="e64" onclick="simtoggle('64');" src="cwtoti080.png" style="left:1036px;top: 95px;">
-        <img class="ptot" id="e64a" onclick="simtoggle('64');" src="cwtoti030.png" style="left:1398px;top: 95px;">
-        <img class="pbut" id="e23" onclick="sendtoggle('23');" src="cwpointdu0.png" style="left:1279px;top: 95px;">
-        <img class="pbut" id="e22" onclick="sendtoggle('22');" src="cwpointblr0.png" style="left:1164px;top:212px;">
-        <img class="pbut" id="e21" onclick="sendtoggle('21');" src="cwpointdu0.png" style="left:1096px;top:279px;">
-        <img class="pbut" id="e24" onclick="sendtoggle('24');" src="cwpointdu0.png" style="left:1480px;top: 37px;">
-        <img class="ptot" id="e65" onclick="simtoggle('65');" src="cwtoti120.png" style="left:1388px;top:154px;">
-        <img class="ptot" id="e66" onclick="simtoggle('66');" src="cwtoti080.png" style="left:1200px;top:337px;">
-        <img class="psig" id="e129" onclick="sendtoggle('29','129');" src="cwsignr0.png" style="left:1579px;top:116px;">
-        <img class="ptot" id="e67" onclick="simtoggle('67');" src="cwtoti060.png" style="left:1614px;top: 37px;">
-        <img class="ptot" id="e68" onclick="simtoggle('68');" src="cwtoti060.png" style="left:1614px;top: 95px;">
-        <img class="psig" id="e128" onclick="sendtoggle('28','128');" src="cwsignl0.png" style="left:1432px;top: 12px;">
-        <!-- Bottom Half -->
-        <img class="ptot" id="e67a" onclick="simtoggle('67');" src="cwtoti060.png" style="left: 119px;top:589px;">
-        <img class="ptot" id="e68a" onclick="simtoggle('68');" src="cwtoti060.png" style="left: 119px;top:647px;">
-        <img class="ptot" id="e71" onclick="simtoggle('71');" src="cwtoti100.png" style="left: 342px;top:589px;">
-        <img class="ptot" id="e72" onclick="simtoggle('72');" src="cwtoti100.png" style="left: 342px;top:647px;">
-        <img class="psig" id="e136" onclick="sendtoggle('36','136');" src="cwsignl0.png" style="left: 273px;top:564px;">
-        <img class="psig" id="e137" onclick="sendtoggle('37','137');" src="cwsignr0.png" style="left: 273px;top:670px;">
-        <img class="ptot" id="e73" onclick="simtoggle('73');" src="cwtoti140.png" style="left: 668px;top:589px;">
-        <img class="ptot" id="e73a" onclick="simtoggle('73');" src="cwtoti020.png" style="left:1174px;top:589px;">
-        <img class="ptot" id="e74" onclick="simtoggle('74');" src="cwtoti140.png" style="left: 668px;top:647px;">
-        <img class="ptot" id="e74a" onclick="simtoggle('74');" src="cwtoti060.png" style="left:1174px;top:647px;">
-        <img class="psig" id="e138" onclick="sendtoggle('38','138');" src="cwsignl0.png" style="left: 640px;top:565px;">
-        <img class="psig" id="e139" onclick="sendtoggle('39','139');" src="cwsignr0.png" style="left: 640px;top:670px;">
-        <img class="ptot" id="e78" onclick="simtoggle('78');" src="cwtoti040.png" style="left: 957px;top:472px;">
-        <img class="pbut" id="e3" onclick="sendtoggle('3');" src="cwpointtl0.png" style="left:1070px;top:472px;">
-        <img class="ptot" id="e77" onclick="simtoggle('77');" src="cwtoti080.png" style="left: 842px;top:530px;">
-        <img class="pbut" id="e1" onclick="sendtoggle('1');" src="cwpointdu0.png" style="left:1070px;top:589px;">
-        <img class="pbut" id="e5" onclick="sendtoggle('5');" src="cwpointtr0.png" style="left:1396px;top:472px;">
-        <img class="pbut" id="e2" onclick="sendtoggle('2');" src="cwpointdu0.png" style="left:1222px;top:530px;">
-        <img class="pbut" id="e4" onclick="sendtoggle('4');" src="cwpointdd0.png" style="left:1337px;top:589px;">
-        <img class="pbut" id="e6" onclick="sendtoggle('6');" src="cwpointdd0.png" style="left:1605px;top:530px;">
-        <img class="ptot" id="e82" onclick="simtoggle('82');" src="cwtoti100.png" style="left:1510px;top:472px;">
-        <img class="ptot" id="e81" onclick="simtoggle('81');" src="cwtoti030.png" style="left:1510px;top:530px;">
-        <img class="ptot" id="e81a" onclick="simtoggle('81');" src="cwtoti030.png" style="left:1710px;top:530px;">
-        <img class="ptot" id="e75" onclick="simtoggle('75');" src="cwtoti030.png" style="left:1510px;top:589px;">
-        <img class="ptot" id="e75a" onclick="simtoggle('75');" src="cwtoti030.png" style="left:1710px;top:589px;">
-        <img class="ptot" id="e76" onclick="simtoggle('76');" src="cwtoti050.png" style="left:1510px;top:647px;">
-        <img class="psig" id="e149" onclick="sendtoggle('49','149');" src="cwsignr0.png" style="left:1321px;top:506px;">
-        <img class="psig" id="e146" onclick="sendtoggle('46','146');" src="cwsignr0.png" style="left:1435px;top:603px;">
-        <img class="psig" id="e147" onclick="sendtoggle('47','147');" src="cwsignr0.png" style="left:1435px;top:629px;">
-        <img class="psig" id="e148" onclick="sendtoggle('48','148');" src="cwsignl0.png" style="left:1740px;top:562px;">
-        <!-- Narrow Gauge (tortoise points) -->
-        <img class="pbut" id="e256-2" onclick="sendonevent('256-1','256-2');" src="cwbutn0.png"
-             style="left: 554px;top:380px;">
-        <img class="pbut" id="e256-2a" onclick="sendoffevent('256-1','256-2a');" src="cwbutr0.png"
-             style="left: 554px;top:314px;">
+        <img class="ptot" id="e51" onclick="simtoggle('51');" src="TrackCircuit0.svg" style="left: 120px;top: 60px;">
+        <img class="ptot" id="e52" onclick="simtoggle('52');" src="TrackCircuit0.svg" style="left: 240px;top:120px;">
+        <img class="ptot" id="e53" onclick="simtoggle('53');" src="TrackCircuit0.svg" style="left: 300px;top:120px;">
+        <img class="ptot" id="e54" onclick="simtoggle('54');" src="TrackCircuit0.svg" style="left: 360px;top:120px;">
+        <img class="ptot" id="e55" onclick="simtoggle('55');" src="TrackCircuit0.svg" style="left:   0px;top:180px;">
+        <img class="ptot" id="e55a" onclick="simtoggle('55');" src="TrackCircuit0.svg" style="left:  60px;top:180px;">
+        <img class="ptot" id="e55b" onclick="simtoggle('55');" src="TrackCircuit0.svg" style="left: 120px;top:180px;">
+        <img class="psig" id="e116" onclick="sendtoggle('16','116');" src="cwsignl0.png.svg"
+             style="left: 265px;top: 50px;">
+        <img class="psig" id="e117" onclick="sendtoggle('17','117');" src="cwsignl0.png.svg"
+             style="left: 265px;top: 78px;">
+        <img class="psig" id="e118" onclick="sendtoggle('18','118');" src="cwsignl0.png.svg"
+             style="left: 265px;top:167px;">
+        <img class="psig" id="e119" onclick="sendtoggle('19','119');" src="cwsignl0.png.svg"
+             style="left: 265px;top:194px;">
+        <img class="pbut" id="e12" onclick="sendtoggle('12');" src="TurnoutWyeRDnN0.svg" style="left: 180px;top:120px;">
+        <img class="pbut" id="e11" onclick="sendtoggle('11');" src="TurnoutWyeLDnN0.svg" style="left: 180px;top:180px;">
+        <img class="pbut" id="e10" onclick="sendtoggle('10');" src="TurnoutWyeRUpN0.svg" style="left: 180px;top:240px;">
     </div>
     <!-- Throttle 1 ('x') -->
     <div class="throt">
