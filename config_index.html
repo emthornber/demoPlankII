@@ -1,0 +1,365 @@
+﻿<!-- CANWEB Sample HTML
+18-Jun-14 PJW Rationalised status box
+13-Jun-14 PJW Added tortoise style point example
+12-Jun-14 PJW Added support for loco images
+10-Jun-14 PJW Revised variable usage
+-->
+<!DOCTYPE html>
+<html><head>
+<title>CANWEB Sample Railway</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"></head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="canweb.css">
+<script src="canweb.js"></script>
+<script>
+ // -------------------------------------------
+ // Global setup
+ systext = new scrolltext('systext',35); // Create a store for system text
+ syshide = true;                         // Initially hide system text
+ simmode = true;                         // Set initial simulation mode
+ stopdir = true;                         // Stop before changing direction
+ maxrows = 6;                            // Max rows for selection box
+ maxfunc = 10;                           // Maximum number of loco function keys
+ // -------------------------------------------
+</script><body>
+<div class="cont" style="width:1900px;left:0px;top:0px;">
+ <div class="panl" style="height:720px;">
+  <!-- The main track drawing -->
+  <img class="pdwg" style="left:0px;top:34px;" src="cwtracks.png">
+  <!-- Software version -->
+  <div class="psys" id="sysvers" style="left:1745px;top:2px;font-size:12px;"></div>
+  <!-- The system text can display the log -->
+  <div class="psys" id="systext" style="left:5px;top:10px;height:675px;width:1800px;"></div>
+  <!-- The status box displays the time/date or connection status -->
+  <div class="ptxt" id="status" style="left:720px;top:380px;width:1075px;height:60px;" onclick="statusclick();">Connecting...</div>
+  <!-- Define layout control buttons -->
+  <div class="gbut0" style="left:140px;top:275px;">
+   <div class="gbut1" onclick="sendonevent('9');">Start of Day</div>
+  </div>
+  <div class="gbut0" style="left:140px;top:325px;">
+   <div class="gbut1">Test</div>
+   <div class="gbut2"><img id="e8" src="cwgbutr0.png" onclick="sendtoggle('8');"></div>
+  </div>
+  <div class="gbut0" style="left:140px;top:375px;">
+   <div class="gbut1">Aux Func</div>
+   <div class="gbut2"><img id="e95" src="cwgbutg0.png" onclick="sendtoggle('95');"></div>
+  </div>
+  <div class="gbut0" style="left:140px;top:425px;">
+   <div class="gbut1">Simulate</div>
+   <div class="gbut2"><img id="a0" src="cwgbutg0.png" onclick="simbutton();"></div>
+  </div>
+  <div class="sbut0" style="left:420px;top:440px;">
+   <div class="sbut3"><b>Stop<br>All</b></div>
+   <div class="sbut2"><img id="a1" src="cwsbutr0.png" onclick="auxtoggle('1');"></div>
+  </div>
+  <!-- Top Half -->
+  <img class="ptot" style="left:  15px;top: 37px;" id="e51" src="cwtoti080.png" onclick="simtoggle('51');">
+  <img class="ptot" style="left:  15px;top: 95px;" id="e52" src="cwtoti080.png" onclick="simtoggle('52');">
+  <img class="ptot" style="left:  15px;top:154px;" id="e53" src="cwtoti080.png" onclick="simtoggle('53');">
+  <img class="ptot" style="left:  15px;top:212px;" id="e54" src="cwtoti080.png" onclick="simtoggle('54');">
+  <img class="psig" style="left: 265px;top: 50px;" id="e116" src="cwsignl0.png" onclick="sendtoggle('16','116');">
+  <img class="psig" style="left: 265px;top: 78px;" id="e117" src="cwsignl0.png" onclick="sendtoggle('17','117');">
+  <img class="psig" style="left: 265px;top:167px;" id="e118" src="cwsignl0.png" onclick="sendtoggle('18','118');">
+  <img class="psig" style="left: 265px;top:194px;" id="e119" src="cwsignl0.png" onclick="sendtoggle('19','119');">
+  <img class="pbut" style="left: 308px;top: 37px;" id="e12" src="cwpointtl0.png" onclick="sendtoggle('12');">
+  <img class="pbut" style="left: 308px;top:154px;" id="e11" src="cwpointdu0.png" onclick="sendtoggle('11');">
+  <img class="ptot" style="left: 604px;top: 37px;" id="e55" src="cwtoti040.png" onclick="simtoggle('55');">
+  <img class="ptot" style="left: 430px;top: 95px;" id="e56" src="cwtoti100.png" onclick="simtoggle('56');">
+  <img class="ptot" style="left: 817px;top: 37px;" id="e56a" src="cwtoti030.png" onclick="simtoggle('56');">
+  <img class="ptot" style="left: 430px;top:154px;" id="e57" src="cwtoti120.png" onclick="simtoggle('57');">
+  <img class="ptot" style="left: 846px;top: 95px;" id="e57a" src="cwtoti020.png" onclick="simtoggle('57');">
+  <img class="ptot" style="left: 430px;top:212px;" id="e62" src="cwtoti140.png" onclick="simtoggle('62');">
+  <img class="ptot" style="left: 835px;top:212px;" id="e62a" src="cwtoti120.png" onclick="simtoggle('62');">
+  <img class="ptot" style="left: 749px;top:279px;" id="e61" src="cwtoti120.png" onclick="simtoggle('61');">
+  <img class="ptot" style="left: 749px;top:337px;" id="e58" src="cwtoti120.png" onclick="simtoggle('58');">
+  <img class="pbut" style="left: 710px;top: 37px;" id="e13" src="cwpointblr0.png" onclick="sendtoggle('13');">
+  <img class="psig" style="left: 846px;top: 12px;" id="e126" src="cwsignl0.png" onclick="sendtoggle('26','126');">
+  <img class="pbut" style="left: 895px;top: 37px;" id="e14" src="cwpointdd0.png" onclick="sendtoggle('14');">
+  <img class="psig" style="left: 998px;top:116px;" id="e127" src="cwsignr0.png" onclick="sendtoggle('27','127');">
+  <img class="ptot" style="left:1016px;top: 37px;" id="e63" src="cwtoti100.png" onclick="simtoggle('63');">
+  <img class="ptot" style="left:1306px;top: 37px;" id="e63a" src="cwtoti060.png" onclick="simtoggle('63');">
+  <img class="ptot" style="left:1036px;top: 95px;" id="e64" src="cwtoti080.png" onclick="simtoggle('64');">
+  <img class="ptot" style="left:1398px;top: 95px;" id="e64a" src="cwtoti030.png" onclick="simtoggle('64');">
+  <img class="pbut" style="left:1279px;top: 95px;" id="e23" src="cwpointdu0.png" onclick="sendtoggle('23');">
+  <img class="pbut" style="left:1164px;top:212px;" id="e22" src="cwpointblr0.png" onclick="sendtoggle('22');">
+  <img class="pbut" style="left:1096px;top:279px;" id="e21" src="cwpointdu0.png" onclick="sendtoggle('21');">
+  <img class="pbut" style="left:1480px;top: 37px;" id="e24" src="cwpointdu0.png" onclick="sendtoggle('24');">
+  <img class="ptot" style="left:1388px;top:154px;" id="e65" src="cwtoti120.png" onclick="simtoggle('65');">
+  <img class="ptot" style="left:1200px;top:337px;" id="e66" src="cwtoti080.png" onclick="simtoggle('66');">
+  <img class="psig" style="left:1579px;top:116px;" id="e129" src="cwsignr0.png" onclick="sendtoggle('29','129');">
+  <img class="ptot" style="left:1614px;top: 37px;" id="e67" src="cwtoti060.png" onclick="simtoggle('67');">
+  <img class="ptot" style="left:1614px;top: 95px;" id="e68" src="cwtoti060.png" onclick="simtoggle('68');">
+  <img class="psig" style="left:1432px;top: 12px;" id="e128" src="cwsignl0.png" onclick="sendtoggle('28','128');">
+  <!-- Bottom Half -->
+  <img class="ptot" style="left: 119px;top:589px;" id="e67a" src="cwtoti060.png" onclick="simtoggle('67');">
+  <img class="ptot" style="left: 119px;top:647px;" id="e68a" src="cwtoti060.png" onclick="simtoggle('68');">
+  <img class="ptot" style="left: 342px;top:589px;" id="e71" src="cwtoti100.png" onclick="simtoggle('71');">
+  <img class="ptot" style="left: 342px;top:647px;" id="e72" src="cwtoti100.png" onclick="simtoggle('72');">
+  <img class="psig" style="left: 273px;top:564px;" id="e136" src="cwsignl0.png" onclick="sendtoggle('36','136');">
+  <img class="psig" style="left: 273px;top:670px;" id="e137" src="cwsignr0.png" onclick="sendtoggle('37','137');">
+  <img class="ptot" style="left: 668px;top:589px;" id="e73" src="cwtoti140.png" onclick="simtoggle('73');">
+  <img class="ptot" style="left:1174px;top:589px;" id="e73a" src="cwtoti020.png" onclick="simtoggle('73');">
+  <img class="ptot" style="left: 668px;top:647px;" id="e74" src="cwtoti140.png" onclick="simtoggle('74');">
+  <img class="ptot" style="left:1174px;top:647px;" id="e74a" src="cwtoti060.png" onclick="simtoggle('74');">
+  <img class="psig" style="left: 640px;top:565px;" id="e138" src="cwsignl0.png" onclick="sendtoggle('38','138');">
+  <img class="psig" style="left: 640px;top:670px;" id="e139" src="cwsignr0.png" onclick="sendtoggle('39','139');">
+  <img class="ptot" style="left: 957px;top:472px;" id="e78" src="cwtoti040.png" onclick="simtoggle('78');">
+  <img class="pbut" style="left:1070px;top:472px;" id="e3"  src="cwpointtl0.png" onclick="sendtoggle('3');">
+  <img class="ptot" style="left: 842px;top:530px;" id="e77" src="cwtoti080.png" onclick="simtoggle('77');">
+  <img class="pbut" style="left:1070px;top:589px;" id="e1"  src="cwpointdu0.png" onclick="sendtoggle('1');">
+  <img class="pbut" style="left:1396px;top:472px;" id="e5"  src="cwpointtr0.png" onclick="sendtoggle('5');">
+  <img class="pbut" style="left:1222px;top:530px;" id="e2"  src="cwpointdu0.png" onclick="sendtoggle('2');">
+  <img class="pbut" style="left:1337px;top:589px;" id="e4"  src="cwpointdd0.png" onclick="sendtoggle('4');">
+  <img class="pbut" style="left:1605px;top:530px;" id="e6"  src="cwpointdd0.png" onclick="sendtoggle('6');">
+  <img class="ptot" style="left:1510px;top:472px;" id="e82" src="cwtoti100.png" onclick="simtoggle('82');">
+  <img class="ptot" style="left:1510px;top:530px;" id="e81" src="cwtoti030.png" onclick="simtoggle('81');">
+  <img class="ptot" style="left:1710px;top:530px;" id="e81a" src="cwtoti030.png" onclick="simtoggle('81');">
+  <img class="ptot" style="left:1510px;top:589px;" id="e75" src="cwtoti030.png" onclick="simtoggle('75');">
+  <img class="ptot" style="left:1710px;top:589px;" id="e75a" src="cwtoti030.png" onclick="simtoggle('75');">
+  <img class="ptot" style="left:1510px;top:647px;" id="e76" src="cwtoti050.png" onclick="simtoggle('76');">
+  <img class="psig" style="left:1321px;top:506px;" id="e149" src="cwsignr0.png" onclick="sendtoggle('49','149');">
+  <img class="psig" style="left:1435px;top:603px;" id="e146" src="cwsignr0.png" onclick="sendtoggle('46','146');">
+  <img class="psig" style="left:1435px;top:629px;" id="e147" src="cwsignr0.png" onclick="sendtoggle('47','147');">
+  <img class="psig" style="left:1740px;top:562px;" id="e148" src="cwsignl0.png" onclick="sendtoggle('48','148');">
+  <!-- Narrow Gauge (tortoise points) -->
+  <img class="pbut" style="left: 554px;top:380px;" id="e256-2" src="cwbutn0.png" onclick="sendonevent('256-1','256-2');">
+  <img class="pbut" style="left: 554px;top:314px;" id="e256-2a" src="cwbutr0.png" onclick="sendoffevent('256-1','256-2a');">
+ </div>
+ <!-- Throttle 1 ('x') -->
+ <div class="throt">
+  <div class="tsel" onclick="locoselectclick('x');">
+   <img class="tsel0" id="locix" src="loco_none.png">
+   <div class="tsel1" id="locox"><b>Select Loco</b></div>
+   <div class="tsel2" id="addrx"></div>
+  </div>
+  <div class="tgaph"></div>
+  <div class="tdir" id="bx29">
+   <div class="tdir1"><img id="fx29" src="cwdirc0.png" onclick="locodirectionclick('x',true);"></div>
+   <div class="tdir2" id="lspdx">0</div>
+  </div>
+  <div class="tgaph"></div>
+  <div class="tspd" id="bx31">
+   <input id="speedx" style="height:100%;width:100%;background-color:oldlace;" min="0" max="128" oninput="locospeedchange('x',this.value)" type="range">
+  </div>
+  <table class="tfnc">
+  <tr>
+  <td class="tfnc1" id="bx0">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tx0">F0</div>
+    <div class="tfnc4"><img id="fx0" src="cwfbutg0.png" onclick="locofuncclick('x0');"></div>
+   </div>
+  </td><td class="tfnc1" id="bx2">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tx2">F2</div>
+    <div class="tfnc4"><img id="fx2" src="cwfbutg0.png" onclick="locofuncclick('x2');"></div>
+   </div>
+  </td><td class="tfnc1" id="bx4">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tx4">F4</div>
+    <div class="tfnc4"><img id="fx4" src="cwfbutg0.png" onclick="locofuncclick('x4');"></div>
+   </div>
+  </td><td class="tfnc1" id="bx6">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tx6">F6</div>
+    <div class="tfnc4"><img id="fx6" src="cwfbutg0.png" onclick="locofuncclick('x6');"></div>
+   </div>
+  </td><td class="tfnc1" id="bx8">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tx8">F8</div>
+    <div class="tfnc4"><img id="fx8" src="cwfbutg0.png" onclick="locofuncclick('x8');"></div>
+   </div>
+  </td></tr><tr>
+  <td class="tfnc1" id="bx1">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tx1">F1</div>
+    <div class="tfnc4"><img id="fx1" src="cwfbutg0.png" onclick="locofuncclick('x1');"></div>
+   </div>
+  </td><td class="tfnc1" id="bx3">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tx3">F3</div>
+    <div class="tfnc4"><img id="fx3" src="cwfbutg0.png" onclick="locofuncclick('x3');"></div>
+   </div>
+  </td><td class="tfnc1" id="bx5">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tx5">F5</div>
+    <div class="tfnc4"><img id="fx5" src="cwfbutg0.png" onclick="locofuncclick('x5');"></div>
+   </div>
+  </td><td class="tfnc1" id="bx7">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tx7">F7</div>
+    <div class="tfnc4"><img id="fx7" src="cwfbutg0.png" onclick="locofuncclick('x7');"></div>
+   </div>
+  </td><td class="tfnc1" id="bx9">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tx9">F9</div>
+    <div class="tfnc4"><img id="fx9" src="cwfbutg0.png" onclick="locofuncclick('x9');"></div>
+   </div>
+  </td></tr>
+  </table>
+  <div class="tgapr"></div>
+  <div class="tstp" id="bx30">
+   <div class="tstp1"><b>Stop</b></div>
+   <div class="tstp2"><img id="fx30" src="cwsbutr0.png" onclick="locostopclick('x');"></div>
+  </div>
+ </div>
+ <div class="tgapv"></div>
+ <!-- Throttle 2 ('y') -->
+ <div class="throt">
+  <div class="tsel" onclick="locoselectclick('y');">
+   <img class="tsel0" id="lociy" src="loco_none.png">
+   <div class="tsel1" id="locoy"><b>Select Loco</b></div>
+   <div class="tsel2" id="addry"></div>
+  </div>
+  <div class="tgaph"></div>
+  <div class="tdir" id="by29">
+   <div class="tdir1"><img id="fy29" src="cwdirc0.png" onclick="locodirectionclick('y',true);"></div>
+   <div class="tdir2" id="lspdy">0</div>
+  </div>
+  <div class="tgaph"></div>
+  <div class="tspd" id="by31">
+   <input id="speedy" style="height:100%; width:100%; background-color:oldlace;" min="0" max="128" oninput="locospeedchange('y',this.value)" type="range">
+  </div>
+  <table class="tfnc">
+  <tr>
+  <td class="tfnc1" id="by0">
+   <div class="tfnc2">
+    <div class="tfnc3" id="ty0">F0</div>
+    <div class="tfnc4"><img id="fy0" src="cwfbutg0.png" onclick="locofuncclick('y0');"></div>
+   </div>
+  </td><td class="tfnc1" id="by2">
+   <div class="tfnc2">
+    <div class="tfnc3" id="ty2">F2</div>
+    <div class="tfnc4"><img id="fy2" src="cwfbutg0.png" onclick="locofuncclick('y2');"></div>
+   </div>
+  </td><td class="tfnc1" id="by4">
+   <div class="tfnc2">
+    <div class="tfnc3" id="ty4">F4</div>
+    <div class="tfnc4"><img id="fy4" src="cwfbutg0.png" onclick="locofuncclick('y4');"></div>
+   </div>
+  </td><td class="tfnc1" id="by6">
+   <div class="tfnc2">
+    <div class="tfnc3" id="ty6">F6</div>
+    <div class="tfnc4"><img id="fy6" src="cwfbutg0.png" onclick="locofuncclick('y6');"></div>
+   </div>
+  </td><td class="tfnc1" id="by8">
+   <div class="tfnc2">
+    <div class="tfnc3" id="ty8">F8</div>
+    <div class="tfnc4"><img id="fy8" src="cwfbutg0.png" onclick="locofuncclick('y8');"></div>
+   </div>
+  </td></tr><tr>
+  <td class="tfnc1" id="by1">
+   <div class="tfnc2">
+    <div class="tfnc3" id="ty1">F1</div>
+    <div class="tfnc4"><img id="fy1" src="cwfbutg0.png" onclick="locofuncclick('y1');"></div>
+   </div>
+  </td><td class="tfnc1" id="by3">
+   <div class="tfnc2">
+    <div class="tfnc3" id="ty3">F3</div>
+    <div class="tfnc4"><img id="fy3" src="cwfbutg0.png" onclick="locofuncclick('y3');"></div>
+   </div>
+  </td><td class="tfnc1" id="by5">
+   <div class="tfnc2">
+    <div class="tfnc3" id="ty5">F5</div>
+    <div class="tfnc4"><img id="fy5" src="cwfbutg0.png" onclick="locofuncclick('y5');"></div>
+   </div>
+  </td><td class="tfnc1" id="by7">
+   <div class="tfnc2">
+    <div class="tfnc3" id="ty7">F7</div>
+    <div class="tfnc4"><img id="fy7" src="cwfbutg0.png" onclick="locofuncclick('y7');"></div>
+   </div>
+  </td><td class="tfnc1" id="by9">
+   <div class="tfnc2">
+    <div class="tfnc3" id="ty9">F9</div>
+    <div class="tfnc4"><img id="fy9" src="cwfbutg0.png" onclick="locofuncclick('y9');"></div>
+   </div>
+  </td></tr></table>
+  <div class="tgapr"></div>
+  <div class="tstp" id="by30">
+   <div class="tstp1"><b>Stop</b></div>
+   <div class="tstp2"><img id="fy30" src="cwsbutr0.png" onclick="locostopclick('y');"></div>
+  </div>
+ </div>
+ <div class="tgapv"></div>
+ <!-- Throttle 3 ('z') -->
+ <div class="throt">
+  <div class="tsel" onclick="locoselectclick('z');">
+   <img class="tsel0" id="lociz" src="loco_none.png">
+   <div class="tsel1" id="locoz"><b>Select Loco</b></div>
+   <div class="tsel2" id="addrz"></div>
+  </div>
+  <div class="tgaph"></div>
+  <div class="tdir" id="bz29">
+   <div class="tdir1"><img id="fz29" src="cwdirc0.png" onclick="locodirectionclick('z',true);"></div>
+   <div class="tdir2" id="lspdz">0</div>
+  </div>
+  <div class="tgaph"></div>
+  <div class="tspd" id="bz31">
+   <input id="speedz" style="height:100%; width:100%; background-color:oldlace;" min="0" max="128" oninput="locospeedchange('z',this.value)" type="range">
+  </div>
+  <table class="tfnc">
+  <tr>
+  <td class="tfnc1" id="bz0">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tz0">F0</div>
+    <div class="tfnc4"><img id="fz0" src="cwfbutg0.png" onclick="locofuncclick('z0');"></div>
+   </div>
+  </td><td class="tfnc1" id="bz2">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tz2">F2</div>
+    <div class="tfnc4"><img id="fz2" src="cwfbutg0.png" onclick="locofuncclick('z2');"></div>
+   </div>
+  </td><td class="tfnc1" id="bz4">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tz4">F4</div>
+    <div class="tfnc4"><img id="fz4" src="cwfbutg0.png" onclick="locofuncclick('z4');"></div>
+   </div>
+  </td><td class="tfnc1" id="bz6">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tz6">F6</div>
+    <div class="tfnc4"><img id="fz6" src="cwfbutg0.png" onclick="locofuncclick('z6');"></div>
+   </div>
+  </td><td class="tfnc1" id="bz8">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tz8">F8</div>
+    <div class="tfnc4"><img id="fz8" src="cwfbutg0.png" onclick="locofuncclick('z8');"></div>
+   </div>
+  </td></tr><tr>
+  <td class="tfnc1" id="bz1">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tz1">F1</div>
+    <div class="tfnc4"><img id="fz1" src="cwfbutg0.png" onclick="locofuncclick('z1');"></div>
+   </div>
+  </td><td class="tfnc1" id="bz3">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tz3">F3</div>
+    <div class="tfnc4">
+     <img id="fz3" src="cwfbutg0.png" onclick="locofuncclick('z3');">
+    </div>
+   </div>
+  </td><td class="tfnc1" id="bz5">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tz5">F5</div>
+    <div class="tfnc4"><img id="fz5" src="cwfbutg0.png" onclick="locofuncclick('z5');"></div>
+   </div>
+  </td><td class="tfnc1" id="bz7">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tz7">F7</div>
+    <div class="tfnc4"><img id="fz7" src="cwfbutg0.png" onclick="locofuncclick('z7');"></div>
+   </div>
+  </td><td class="tfnc1" id="bz9">
+   <div class="tfnc2">
+    <div class="tfnc3" id="tz9">F9</div>
+    <div class="tfnc4"><img id="fz9" src="cwfbutg0.png" onclick="locofuncclick('z9');"></div>
+   </div>
+  </td></tr></table>
+  <div class="tgapr"></div>
+  <div class="tstp" id="bz30">
+   <div class="tstp1"><b>Stop</b></div>
+   <div class="tstp2"><img id="fz30" src="cwsbutr0.png" onclick="locostopclick('z');"></div>
+  </div>
+ </div>
+ <!-- Initially Invisible Panel for Selection -->
+ <div id="overlay">
+ </div>
+</div>
+</body></html>

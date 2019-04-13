@@ -1,0 +1,522 @@
+/* CANWEB Style Sheet 8-Sep-14 */
+/* Panel Objects */
+.cont
+{
+ z-index:0;
+ position:relative;
+}
+.panl
+{
+ z-index:1;
+ position:relative;
+ bottom:0px;
+ left:0px;
+}
+.panl p
+{
+ position:absolute;
+ text-align:center;
+ font-size:30px;
+ font-family:sans-serif;
+ font-weight:bold;
+ z-index:4;
+}
+.pdwg
+{
+ position:absolute;
+ z-index:2;
+}
+.prte
+{
+ position:absolute;
+ z-index:3;
+}
+.pdwx
+{
+ position:absolute;
+ z-index:4;
+}
+.psys
+{
+ position:absolute;
+ overflow:hidden;
+ font-family:monospace;
+ white-space:nowrap;
+ float:left;
+ font-size:16px;
+ z-index:20;
+}
+.ptxt
+{
+ position:absolute;
+ //background-color:ghostwhite;
+ text-align:center;
+ font-family:monospace;
+ font-size:50px;
+ font-weight:bold;
+ z-index:25;
+}
+.pnum
+{
+ display:none;
+ position:absolute;
+ border-style:solid;
+ border-width:1;
+ border-color:blue;
+ border-radius:15px;
+ background-color:PaleGoldenRod;
+ text-align:center;
+ font-family:monospace;
+ font-size:80px;
+ font-weight:bold;
+ color:Blue;
+ z-index:25;
+}
+.ptot
+{
+ position:absolute;
+ z-index:30;
+}
+.psig
+{
+ position:absolute;
+ z-index:35;
+}
+.pbut
+{
+ position:absolute;
+ z-index:40;
+}
+.pled
+{
+ position:absolute;
+ z-index:45;
+}
+/* General Button 150x30 */
+.gbut0
+{
+ z-index:50;
+ position:absolute;
+ width:150px;
+ height:30px;
+ background-color:gainsboro;
+ background:linear-gradient(white,gainsboro);
+ border-style:solid;
+ border-width:1;
+ border-color:black;
+ border-radius:10px;
+}
+.gbut1
+{
+ position:absolute;
+ z-index:51;
+ width:150px;
+ height:30px;
+ left:10px;
+ bottom:0;
+ text-align:left;
+ font-size:150%;
+/* font-weight:bold; */
+}
+.gbut2
+{
+ position:absolute;
+ z-index:52;
+ height:30px;
+ bottom:0px;
+ left:0px;
+}
+/* Text Button 130x30 */
+.tbut0
+{
+ z-index:50;
+ position:absolute;
+ width:130px;
+ height:30px;
+ background-color:gainsboro;
+ background:linear-gradient(white,gainsboro);
+ border-style:solid;
+ border-width:1;
+ border-color:black;
+ border-radius:10px;
+}
+.tbut1
+{
+ position:absolute;
+ z-index:51;
+ width:130px;
+ height:30px;
+ left:10px;
+ bottom:0;
+ text-align:centre;
+ font-size:150%;
+/* font-weight:bold; */
+}
+.tbut2
+{
+ position:absolute;
+ z-index:52;
+ height:30px;
+ bottom:0px;
+ left:0px;
+}
+/* Small Button, used for Loco Direction/Stop 120x95 */
+.sbut0
+{
+ z-index:90;
+ position:relative;
+ height:95px;
+ width:120px;
+ bottom:0px;
+ left:5px;
+ background-color:MistyRose;
+ background:linear-gradient(white,mistyrose);
+ border-style:solid;
+ border-width:1;
+ border-color:black;
+ border-radius:10px;
+}
+.sbut1
+{
+ position:absolute;
+ z-index:91;
+ height:68px;
+ width:120px;
+ left:0px;
+ bottom:0px;
+ font-size:200%;
+ /*vertical-align:middle;*/
+ text-align:center;
+}
+.sbut2
+{
+ position:absolute;
+ z-index:92;
+ height:95px;
+ bottom:0px;
+ left:0px;
+}
+.sbut3
+{
+ position:absolute;
+ z-index:91;
+ height:85px;
+ width:120px;
+ left:0px;
+ bottom:0px;
+ font-size:200%;
+ text-align:center;
+}
+.pmsg
+{
+ display:none;
+ position:relative;
+ z-index:80;
+}
+.pmsg1
+{
+ position:relative;
+ border-style:solid;
+ border-width:1;
+ border-color:blue;
+ border-radius:15px;
+ text-align:center;
+ line-height:90%;
+ font-size:100px;
+ font-weight:bold;
+ background-color:PaleGoldenRod;
+ z-index:81;
+}
+.pmsg2
+{
+ width:100%;
+ z-index:80;
+}
+/* Throttle Stuff */
+.throt
+{
+ z-index:80;
+ position:relative;
+ height:95px;
+ left:0px;
+}
+/* Left Hand Horizontal gap between elements */
+.tgaph
+{
+ float:left;
+ width:15px;
+ height:100%;
+}
+/* Right Hand Horizontal gap between elements */
+.tgapr
+{
+ float:right;
+ width:15px;
+ height:100%;
+}
+/* Vertical gap between elements */
+.tgapv
+{
+ height:20px;
+ width:100%;
+}
+/* Throttle Select Button */
+.tsel
+{
+ position:relative;
+ float:left;
+ width:280px;
+ height:100%;
+ background:linear-gradient(white,oldlace);
+ border-style:solid;
+ border-width:1;
+ border-color:black;
+ border-radius:10px;
+}
+/* Throttle Select Loco Image */
+img.tsel0
+{
+ opacity:0.33;
+ display:block;
+ margin-left:auto;
+ margin-right:auto;
+}
+/* Throttle Select Loco Name */
+.tsel1
+{
+ position:absolute;
+ width:100%;
+ top:15%;
+ text-align:center;
+ font-size:200%;
+ font-weight:bold;
+ text-shadow: 10px 10px 10px white;
+}
+/* Throttle Select Loco Address */
+.tsel2
+{
+ position:absolute;
+ width:100%;
+ bottom:10%;
+ text-align:center;
+ font-weight:bold;
+ font-size:150%;
+ visibility:hidden;
+ text-shadow: 5px 5px 5px white;
+}
+/* Throttle Direction Button */
+.tdir
+{
+ float:left;
+ width:120px;
+ height:100%;
+ visibility:hidden;
+ background:linear-gradient(white,oldlace);
+ border-style:solid;
+ border-width:1;
+ border-color:black;
+ border-radius:10px;
+}
+/* Throttle Direction Image */
+.tdir1
+{
+ position:relative;
+ height:100%;
+}
+/* Throttle Speed Store */
+.tdir2
+{
+ position:relative;
+ visibility:hidden;
+}
+/* Throttle Speed Slider */
+.tspd
+{
+ float:left;
+ width:600px;
+ height:100%; 
+ top:0px;
+ left:30px;
+ visibility:hidden;
+}
+/* Hack to make IE11 work vaguely like anything else */
+@media all and (-ms-high-contrast: active), (-ms-high-contrast: none)
+{
+ .tspd
+ {
+  height:48px;
+ }
+}
+/* Throttle Speed Slider Tweaks */
+input[type='range']
+{
+ -webkit-appearance: none;
+ border: 2px solid #000;
+ border-radius:10px;
+ background:linear-gradient(white,oldlace);
+ box-shadow: inset 0 0 1px #333;
+ height: 10px;
+ vertical-align: middle;
+}
+input[type='range']::-moz-range-track
+{
+ -moz-appearance: none;
+ border-radius:10px;
+ border: 2px solid #000;
+ box-shadow: inset 0 0 1px #333;
+ height: 10px;
+}
+input[type='range']::-webkit-slider-thumb
+{
+ -webkit-appearance: none !important;
+ border-radius: 10px;
+ background-color: white;
+ color: green;
+ box-shadow:inset 0 0 1px rgba(000,000,000,0.5);
+ border: 2px solid #000;
+ height: 70px;
+ width: 70px;
+}
+input[type='range']::-moz-range-thumb
+{
+ -moz-appearance: none;
+ border-radius: 10px;
+ background-color: white;
+ color: green;
+ box-shadow:inset 0 0 1px rgba(000,000,000,0.5);
+ border: 2px solid #000;
+ height: 70px;
+ width: 70px;
+}
+/* Make IE speed slider blob a sensible size */
+input[type='range']::-ms-thumb
+{
+ -ms-appearance: none;
+ border-radius: 10px;
+ background-color: gainsboro;
+ box-shadow:inset 0 0 1px rgba(000,000,000,0.5);
+ border: 2px solid #000;
+ height: 45px;
+ width: 70px;
+}
+/* Throttle Stop Button */
+.tstp
+{
+ float:right;
+ width:120px;
+ height:100%;
+ visibility:hidden;
+ background:linear-gradient(white,mistyrose);
+ border-style:solid;
+ border-width:1;
+ border-color:black;
+ border-radius:10px;
+}
+/* Throttle Stop Button Text */
+.tstp1
+{
+ position:relative;
+ height:40%;
+ width:100%;
+ top:30%;
+ font-size:200%;
+ text-align:center;
+}
+/* Throttle Stop Button Image */
+.tstp2
+{
+ position:absolute;
+ top:0%;
+ height:100%;
+}
+/* Function Keys Table */
+.tfnc
+{
+ float:right;
+ height:100%;
+}
+/* Function Key Table Entry */
+.tfnc1
+{
+ visibility:hidden;
+}
+/* Function Key Table Container */
+.tfnc2
+{
+ position:relative;
+ width:126px;
+ height:40px;
+ background:linear-gradient(white,oldlace);
+ border-style:solid;
+ border-width:1;
+ border-color:black;
+ border-radius:10px;
+}
+/* Function Key Table Text */
+.tfnc3
+{
+ position:absolute;
+ height:83%;
+ width:100%;
+ margin-top:auto;
+ margin-bottom:auto;
+ text-align:center;
+ font-size:150%;
+ bottom:0;
+}
+/* Function Key Table Image */
+.tfnc4
+{
+ position:absolute;
+ height:100%;
+}
+/* Overlay is used for modal selection */
+#overlay
+{
+ display:none;
+ position: absolute;
+ left: 0px;
+ top: 0px;
+ width:100%;
+ height:100%;
+ background-color:gray;
+ opacity:0.8;
+ z-index:1000;
+}
+#overlay div
+{
+ align-content:center;
+ vertical-align:middle;
+}
+#overlay table
+{
+ border-spacing:20px;
+ margin-left:auto;
+ margin-right:auto;
+ margin-top:auto;
+ margin-bottom:auto;
+ vertical-align:middle;
+}
+#overlay img
+{
+ position:relative;
+ display:block;
+ margin-left:auto;
+ margin-right:auto;
+}
+#overlay td
+{
+ width:280px;
+ height:120px;
+ background-color:oldlace;
+ background:linear-gradient(white,oldlace);
+ border-style:solid;
+ border-width:1;
+ border-color:black;
+ border-radius:10px;
+ font-size:200%;
+ font-weight:bold;
+ text-align:center;
+ vertical-align:middle;
+ opacity:1.0;
+}
