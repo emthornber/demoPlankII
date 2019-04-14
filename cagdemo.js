@@ -519,14 +519,14 @@ function auxcommand(parm, state) {
 // -------------------------------------------
 // Set an object with id '<pfx><text>' to a state.
 // Changes the source image to 'xxx0.xxx' or 'xxx1.xxx'
-// Also updates id '<pfx><text>a' and '<pfx><text>b'
+// Also updates id '<pfx><text>a' .. '<pfx><text>z'
 // if they exist
 function setobject(pfx, txt, on) {
     if (txt.length) {
         var name = pfx + txt;
         var sfx = on ? '1' : '0';
         setimage(name, sfx);
-        for (i = 0; i < 26; i++) {
+        for (i = 0; i < letters.length; i++) {
             if (document.images.namedItem( name + letters.charAt(i)) == null ) {
                 break;
             }
