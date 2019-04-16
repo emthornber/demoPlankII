@@ -1,7 +1,10 @@
 // -------------------------------------------
 // CANWEB Scripts
 // -------------------------------------------
-// 13-Apr-19 Generalised setobject
+// 15-Apr-19 Revised to allow 5 additional images to be set with each event
+//  5-Jan-15 Fixed broken error message on autoreconnect
+//  5-Dec-14 Added autoreconnect
+// 23-Nov-14 Allow system shutdown if not connected to layout
 // 21-Aug-14 Added support for sequencer
 // 12-Jun-14 Added support for loco images
 // 10-Jun-14 Added reload, tidied up file
@@ -21,10 +24,9 @@ var socketopen = false;                  // Socket not initially open
 var websocket;                           // Websocket
 var simmode = false;                     // Set initial simulation mode
 var title = "";                          // Layout title
-var datefmt = "hh:mm d-nnn-yyyy";        // Date/Time format
+var datefmt = "hh:mm d-nnn-yy";          // Date/Time format
 var maxrows = 7;                         // Max rows for selection box
 var maxfunc = 10;                        // Maximum number of function keys
-var letters = "abcdefghijklmnopqrstuvwxyz";
 // -------------------------------------------
 // Layout Control functions called from html page
 // -------------------------------------------
@@ -56,7 +58,7 @@ function sendevent(sc, state, but) {
             else
                 sendmessage('e' + sc);
             if (but != undefined) {
-                setimage('e' + but, '2');
+                setimages('e' + but, '2');
             }
         } else {
             systext.addtext('red', "Offline");
@@ -125,7 +127,7 @@ function auxtoggle(set) {
 // -------------------------------------------
 // Process Aux Button Set
 function auxbutton(id) {
-    if (commsonline) {
+    if (socketopen) {
         sendmessage("A" + id);
     }
 }
@@ -335,7 +337,7 @@ window.onload = function () {
     if (syshide)
         systext.hidetext();
     var url = 'ws://' + location.host + '/ws';
-    websocket = new WebSocket(url);
+    websocket = new ReconnectingWebSocket(url);
     websocket.onopen = function (ev) {
         socketopen = true;
         systext.addtext('red', 'Connected');
@@ -344,10 +346,9 @@ window.onload = function () {
     }
     websocket.onclose = function (ev) {
         systext.addtext('red', 'Disconnected');
-        statustext('red', 'DISCONNECTED - Press to Reload');
+        statustext('red', 'DISCONNECTED');
         commsonline = false;
         socketopen = false;
-        websocket.close();
         overlayclick();
         setuploco('x');
         setuploco('y');
@@ -381,7 +382,7 @@ window.onload = function () {
                 case 'F':   // Function On
                     setobject('f', p1, true);
                     break;
-                case 'f':   // Function Off
+                case 'f':   // Function On
                     setobject('f', p1, false);
                     break;
                 case 'A':   // Aux On
@@ -433,8 +434,10 @@ window.onload = function () {
         }
     }
     websocket.onerror = function (ev) {
-        systext.addtext('red', 'ERROR: ' + ev.data);
-        statustext('red', 'ERROR: ' + ev.data);
+        if (ev.data != undefined) {
+            systext.addtext('red', 'ERROR: ' + ev.data);
+            statustext('red', 'ERROR: ' + ev.data);
+        }
         commsonline = false;
     }
 }
@@ -519,24 +522,47 @@ function auxcommand(parm, state) {
 // -------------------------------------------
 // Set an object with id '<pfx><text>' to a state.
 // Changes the source image to 'xxx0.xxx' or 'xxx1.xxx'
-// Also updates id '<pfx><text>a' .. '<pfx><text>z'
+// Also updates id '<pfx><text>a' and '<pfx><text>b'
 // if they exist
 function setobject(pfx, txt, on) {
     if (txt.length) {
         var name = pfx + txt;
         var sfx = on ? '1' : '0';
-        setimage(name, sfx);
-        for (i = 0; i < letters.length; i++) {
-            if (document.images.namedItem( name + letters.charAt(i)) == null ) {
-                break;
+        setimages(name, sfx);
+    }
+}
+
+// -------------------------------------------
+// Set an object with id '<pfx><text>' to special state.
+// Changes the source image to 'xxx2.xxx'
+// Also updates id '<pfx><text>a' and '<pfx><text>b'
+// if they exist
+function setobjectspecial(pfx, txt) {
+    if (txt.length) {
+        var name = pfx + txt;
+        setimages(name, '2');
+    }
+}
+
+// -------------------------------------------
+// Set all images to suffix specified
+function setimages(name, sfx) {
+    setimage(name, sfx);         // Set main image
+    if (setimage(name + 'a', sfx)) // Continue if image exists
+    {
+        if (setimage(name + 'b', sfx)) {
+            if (setimage(name + 'c', sfx)) {
+                if (setimage(name + 'd', sfx)) {
+                    setimage(name + 'e', sfx);
+                }
             }
-            setimage(name + letters.charAt(i), sfx);
         }
     }
 }
 
 // -------------------------------------------
 // Set image to suffix specified
+// Returns null if image does not exist
 function setimage(name, sfx) {
     var elem = document.getElementById(name);
     if (elem != undefined) {
@@ -547,6 +573,7 @@ function setimage(name, sfx) {
             elem.src = src;
         }
     }
+    return elem;
 }
 
 // -------------------------------------------
@@ -560,7 +587,7 @@ function getobject(name) {
             var src = elem.src;
             var n = src.lastIndexOf(".");
             if (n > 1) {
-                if (src.charAt(n-1) != '0') {
+                if (src.substr(n - 1, 1) != '0') {
                     state = true;
                 }
             }
@@ -667,7 +694,7 @@ function messagetext(msg) {
                             txt += '<font color="navy">';
                             break;
                         case 'o':
-                            txt += '<font color="olive">';
+                            txt += '<font color="darkorange">';
                             break;
                         case 'p':
                             txt += '<font color="purple">';
