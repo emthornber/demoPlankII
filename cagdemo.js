@@ -24,7 +24,6 @@ var title = "";                          // Layout title
 var datefmt = "hh:mm d-nnn-yyyy";        // Date/Time format
 var maxrows = 7;                         // Max rows for selection box
 var maxfunc = 10;                        // Maximum number of function keys
-var letters = "abcdefghijklmnopqrstuvwxyz";
 // -------------------------------------------
 // Layout Control functions called from html page
 // -------------------------------------------
@@ -526,27 +525,21 @@ function setobject(pfx, txt, on) {
         var name = pfx + txt;
         var sfx = on ? '1' : '0';
         setimage(name, sfx);
-        for (i = 0; i < letters.length; i++) {
-            if (document.images.namedItem( name + letters.charAt(i)) == null ) {
-                break;
-            }
-            setimage(name + letters.charAt(i), sfx);
+        var code = 'a'.charCodeAt(0);
+        while (setimage(name + String.fromCharCode(code++))) {
         }
     }
 }
 
 // -------------------------------------------
 // Set image to suffix specified
+// Returns NULL if image does not exist
 function setimage(name, sfx) {
     var elem = document.getElementById(name);
     if (elem != undefined) {
-        var src = elem.src;
-        var n = src.lastIndexOf(".");
-        if (n > 1) {
-            src = src.substr(0, n - 1) + sfx + src.substr(n);
-            elem.src = src;
-        }
+        elem.src = elem.src.replace(/\d\./, sfx + '.');
     }
+    return elem;
 }
 
 // -------------------------------------------
