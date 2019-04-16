@@ -95,6 +95,37 @@ function simtoggle(set, read) {
 }
 
 // -------------------------------------------
+// Send command to cycle double bit state
+// 'lsb' is lo event number
+// 'msb' is hi event number
+function senddouble(lsb, msb) {
+    if (set != undefined) {
+        if (commsonline) {
+            if (msb == undefined)
+                msb = lsb;
+            var state = getdouble("e" + msb);
+            if (state)
+                sendmessage("E" + lsb);
+            else
+                sendmessage("e" + lsb);
+            setobject('e', lsb, state);
+        } else {
+            systext.addtext('red', "Offline: " + sc);
+        }
+    }
+}
+
+// -------------------------------------------
+// Send command to cycle double bit state if in simulation mode
+// 'lsb' is lo event number
+// 'msb' is hi event number
+function simdouble(lsb, msb) {
+    if (simmode) {
+        senddouble(lsb, msb);
+    }
+}
+
+// -------------------------------------------
 // Process Simulate Button
 function simbutton() {
     if (socketopen) {
@@ -526,7 +557,7 @@ function setobject(pfx, txt, on) {
         var sfx = on ? '1' : '0';
         setimage(name, sfx);
         var code = 'a'.charCodeAt(0);
-        while (setimage(name + String.fromCharCode(code++))) {
+        while (setimage(name + String.fromCharCode(code++), sfx)) {
         }
     }
 }
@@ -556,6 +587,24 @@ function getobject(name) {
                 if (src.charAt(n-1) != '0') {
                     state = true;
                 }
+            }
+        }
+    }
+    return state;
+}
+
+// -------------------------------------------
+// Get state of a double bit object with id '<name>'
+// Default (error) state is 3 - both bits set - which shouldn't happen in real life
+function getdouble(name) {
+    var state = 3;
+    if (name != undefined) {
+        var elem = document.getElementById(name);
+        if (elem != undefined) {
+            var src = elem.src;
+            var n = src.lastIndexOf(".");
+            if (n > 1) {
+                state = src.charCodeAt(n-1) - '0'.charCodeAt(0);
             }
         }
     }
