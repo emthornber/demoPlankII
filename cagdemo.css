@@ -72,6 +72,11 @@
     z-index: 25;
 }
 
+.pbkg {
+    position: absolute;
+    z-index: 28;
+}
+
 .ptot {
     position: absolute;
     z-index: 30;
