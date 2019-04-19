@@ -153,7 +153,162 @@
         <img alt="Right Turnout" title="Turnout N1E13" class="ptot" id="e7-2" onclick="simtoggle('7-2');" src="TurnoutRightReverse0.svg"
              style="left: 540px;top:240px;">
     </div>
- <!-- Initially Invisible Panel for Selection -->
+    <!-- Throttle 1 ('x') -->
+    <div class="throt">
+        <div class="tsel" onclick="locoselectclick('x');">
+            <img class="tsel0" id="locix" src="loco_none.png">
+            <div class="tsel1" id="locox"><b>Select Loco</b></div>
+            <div class="tsel2" id="addrx"></div>
+        </div>
+        <div class="tgaph"></div>
+        <div class="tdir" id="bx29">
+            <div class="tdir1"><img id="fx29" src="cwdirc0.png" onclick="locodirectionclick('x',true);"></div>
+            <div class="tdir2" id="lspdx">0</div>
+        </div>
+        <div class="tgaph"></div>
+        <div class="tspd" id="bx31">
+            <input id="speedx" style="height:100%;width:100%;background-color:oldlace;" min="0" max="128" oninput="locospeedchange('x',this.value)" type="range">
+        </div>
+        <table class="tfnc">
+            <tr>
+                <td class="tfnc1" id="bx0">
+                    <div class="tfnc2">
+                        <div class="tfnc3" id="tx0">F0</div>
+                        <div class="tfnc4"><img id="fx0" src="cwfbutg0.png" onclick="locofuncclick('x0');"></div>
+                    </div>
+                </td><td class="tfnc1" id="bx2">
+                <div class="tfnc2">
+                    <div class="tfnc3" id="tx2">F2</div>
+                    <div class="tfnc4"><img id="fx2" src="cwfbutg0.png" onclick="locofuncclick('x2');"></div>
+                </div>
+            </td><td class="tfnc1" id="bx4">
+                <div class="tfnc2">
+                    <div class="tfnc3" id="tx4">F4</div>
+                    <div class="tfnc4"><img id="fx4" src="cwfbutg0.png" onclick="locofuncclick('x4');"></div>
+                </div>
+            </td><td class="tfnc1" id="bx6">
+                <div class="tfnc2">
+                    <div class="tfnc3" id="tx6">F6</div>
+                    <div class="tfnc4"><img id="fx6" src="cwfbutg0.png" onclick="locofuncclick('x6');"></div>
+                </div>
+            </td><td class="tfnc1" id="bx8">
+                <div class="tfnc2">
+                    <div class="tfnc3" id="tx8">F8</div>
+                    <div class="tfnc4"><img id="fx8" src="cwfbutg0.png" onclick="locofuncclick('x8');"></div>
+                </div>
+            </td></tr><tr>
+            <td class="tfnc1" id="bx1">
+                <div class="tfnc2">
+                    <div class="tfnc3" id="tx1">F1</div>
+                    <div class="tfnc4"><img id="fx1" src="cwfbutg0.png" onclick="locofuncclick('x1');"></div>
+                </div>
+            </td><td class="tfnc1" id="bx3">
+            <div class="tfnc2">
+                <div class="tfnc3" id="tx3">F3</div>
+                <div class="tfnc4"><img id="fx3" src="cwfbutg0.png" onclick="locofuncclick('x3');"></div>
+            </div>
+        </td><td class="tfnc1" id="bx5">
+            <div class="tfnc2">
+                <div class="tfnc3" id="tx5">F5</div>
+                <div class="tfnc4"><img id="fx5" src="cwfbutg0.png" onclick="locofuncclick('x5');"></div>
+            </div>
+        </td><td class="tfnc1" id="bx7">
+            <div class="tfnc2">
+                <div class="tfnc3" id="tx7">F7</div>
+                <div class="tfnc4"><img id="fx7" src="cwfbutg0.png" onclick="locofuncclick('x7');"></div>
+            </div>
+        </td><td class="tfnc1" id="bx9">
+            <div class="tfnc2">
+                <div class="tfnc3" id="tx9">F9</div>
+                <div class="tfnc4"><img id="fx9" src="cwfbutg0.png" onclick="locofuncclick('x9');"></div>
+            </div>
+        </td></tr>
+        </table>
+        <div class="tgapr"></div>
+        <div class="tstp" id="bx30">
+            <div class="tstp1"><b>Stop</b></div>
+            <div class="tstp2"><img id="fx30" src="cwsbutr0.png" onclick="locostopclick('x');"></div>
+        </div>
+    </div>
+    <div class="tgapv"></div>
+    <!-- Throttle 2 ('y') -->
+    <div class="throt">
+        <div class="tsel" onclick="locoselectclick('y');">
+            <img class="tsel0" id="lociy" src="loco_none.png">
+            <div class="tsel1" id="locoy"><b>Select Loco</b></div>
+            <div class="tsel2" id="addry"></div>
+        </div>
+        <div class="tgaph"></div>
+        <div class="tdir" id="by29">
+            <div class="tdir1"><img id="fy29" src="cwdirc0.png" onclick="locodirectionclick('y',true);"></div>
+            <div class="tdir2" id="lspdy">0</div>
+        </div>
+        <div class="tgaph"></div>
+        <div class="tspd" id="by31">
+            <input id="speedy" style="height:100%; width:100%; background-color:oldlace;" min="0" max="128" oninput="locospeedchange('y',this.value)" type="range">
+        </div>
+        <table class="tfnc">
+            <tr>
+                <td class="tfnc1" id="by0">
+                    <div class="tfnc2">
+                        <div class="tfnc3" id="ty0">F0</div>
+                        <div class="tfnc4"><img id="fy0" src="cwfbutg0.png" onclick="locofuncclick('y0');"></div>
+                    </div>
+                </td><td class="tfnc1" id="by2">
+                <div class="tfnc2">
+                    <div class="tfnc3" id="ty2">F2</div>
+                    <div class="tfnc4"><img id="fy2" src="cwfbutg0.png" onclick="locofuncclick('y2');"></div>
+                </div>
+            </td><td class="tfnc1" id="by4">
+                <div class="tfnc2">
+                    <div class="tfnc3" id="ty4">F4</div>
+                    <div class="tfnc4"><img id="fy4" src="cwfbutg0.png" onclick="locofuncclick('y4');"></div>
+                </div>
+            </td><td class="tfnc1" id="by6">
+                <div class="tfnc2">
+                    <div class="tfnc3" id="ty6">F6</div>
+                    <div class="tfnc4"><img id="fy6" src="cwfbutg0.png" onclick="locofuncclick('y6');"></div>
+                </div>
+            </td><td class="tfnc1" id="by8">
+                <div class="tfnc2">
+                    <div class="tfnc3" id="ty8">F8</div>
+                    <div class="tfnc4"><img id="fy8" src="cwfbutg0.png" onclick="locofuncclick('y8');"></div>
+                </div>
+            </td></tr><tr>
+            <td class="tfnc1" id="by1">
+                <div class="tfnc2">
+                    <div class="tfnc3" id="ty1">F1</div>
+                    <div class="tfnc4"><img id="fy1" src="cwfbutg0.png" onclick="locofuncclick('y1');"></div>
+                </div>
+            </td><td class="tfnc1" id="by3">
+            <div class="tfnc2">
+                <div class="tfnc3" id="ty3">F3</div>
+                <div class="tfnc4"><img id="fy3" src="cwfbutg0.png" onclick="locofuncclick('y3');"></div>
+            </div>
+        </td><td class="tfnc1" id="by5">
+            <div class="tfnc2">
+                <div class="tfnc3" id="ty5">F5</div>
+                <div class="tfnc4"><img id="fy5" src="cwfbutg0.png" onclick="locofuncclick('y5');"></div>
+            </div>
+        </td><td class="tfnc1" id="by7">
+            <div class="tfnc2">
+                <div class="tfnc3" id="ty7">F7</div>
+                <div class="tfnc4"><img id="fy7" src="cwfbutg0.png" onclick="locofuncclick('y7');"></div>
+            </div>
+        </td><td class="tfnc1" id="by9">
+            <div class="tfnc2">
+                <div class="tfnc3" id="ty9">F9</div>
+                <div class="tfnc4"><img id="fy9" src="cwfbutg0.png" onclick="locofuncclick('y9');"></div>
+            </div>
+        </td></tr></table>
+        <div class="tgapr"></div>
+        <div class="tstp" id="by30">
+            <div class="tstp1"><b>Stop</b></div>
+            <div class="tstp2"><img id="fy30" src="cwsbutr0.png" onclick="locostopclick('y');"></div>
+        </div>
+    </div>
+    <div class="tgapv"></div>
+    <!-- Initially Invisible Panel for Selection -->
     <div id="overlay">
     </div>
 </div>
