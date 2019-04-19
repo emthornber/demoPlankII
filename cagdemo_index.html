@@ -3,7 +3,7 @@
 	Created from config_index.html
 -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>CANWEB CAG Demo Railway</title>
     <meta content="text/html; charset=utf-8" http-equiv="content-type">
@@ -26,7 +26,7 @@
 <div class="cont" style="width:800px;left:0px;top:0px;">
     <div class="panl" style="height:480px;">
         <!-- The main track drawing -->
-        <img class="pdwg" src="cagdemoTrack.svg" style="left:0px;top:0px;">
+        <img alt="Track Layout" class="pdwg" src="cagdemoTrack.svg" style="left:0px;top:0px;">
         <!-- Software version -->
         <div class="psys" id="sysvers" style="color:GhostWhite;left:605px;top:2px;font-size:12px;"></div>
         <!-- The system text can display the log -->
@@ -71,9 +71,9 @@
              style="left:360px;top:0px;">
         <img alt="Knob" title="Turnback" class="ptot" id="e1-1" onclick="sendtoggle('1-1');" src="Knob0.svg"
              style="left:360px;top:0px;">
-        <img alt="Lamp" title="Turnback Normal"  class="ptot" id="e1-1a" onclick="sendtoggle('66-8', '5-6');" src="Lamp0.svg"
+        <img alt="Lamp" title="Turnback Normal"  class="ptot" id="e5-6a" onclick="simtoggle('66-8', '5-6');" src="Lamp0.svg"
              style="left:360px;top:0px;">
-        <img alt="Lamp" title="Turnback Reverse" class="ptot" id="e1-1b" onclick="sendtoggle('66-6', '5-5');" src="Lamp0.svg"
+        <img alt="Lamp" title="Turnback Reverse" class="ptot" id="e5-5a" onclick="simtoggle('66-6', '5-5');" src="Lamp0.svg"
              style="left:390px;top:0px;">
         <!-- Turnout Feedback -->
         <img alt="TurnoutWyeLeftGrey" class="pbkg" src="TurnoutWyeLeftGrey.svg"
@@ -141,9 +141,9 @@
              style="left:420px;top:0px;">
         <img alt="Knob" title="Fiddleyard" class="ptot" id="e1-13" onclick="sendtoggle('1-13');" src="Knob0.svg"
              style="left:420px;top:0px;">
-        <img alt="Lamp" title="Fiddleyard Normal"  class="ptot" id="e1-13a" onclick="sendtoggle('66-48', '7-1');" src="Lamp0.svg"
+        <img alt="Lamp" title="Fiddleyard Normal"  class="ptot" id="e7-1a" onclick="simtoggle('66-48', '7-1');" src="Lamp0.svg"
              style="left:420px;top:0px;">
-        <img alt="Lamp" title="Fiddleyard Reverse" class="ptot" id="e1-13b" onclick="sendtoggle('66-46', '7-2');" src="Lamp0.svg"
+        <img alt="Lamp" title="Fiddleyard Reverse" class="ptot" id="e7-2a" onclick="simtoggle('66-46', '7-2');" src="Lamp0.svg"
              style="left:450px;top:0px;">
         <!-- Turnout Feedback -->
         <img alt="TurnoutRightGrey" class="pbkg" src="TurnoutRightGrey.svg"
@@ -153,6 +153,7 @@
         <img alt="Right Turnout" title="Turnout N1E13" class="ptot" id="e7-2" onclick="simtoggle('7-2');" src="TurnoutRightReverse0.svg"
              style="left: 540px;top:240px;">
     </div>
+ <!-- Initially Invisible Panel for Selection -->
     <div id="overlay">
     </div>
 </div>
