@@ -21,7 +21,7 @@ var socketopen = false;                  // Socket not initially open
 var websocket;                           // Websocket
 var simmode = false;                     // Set initial simulation mode
 var title = "";                          // Layout title
-var datefmt = "hh:mm d-nnn-yyyy";        // Date/Time format
+var datefmt = "hh:mm d nnn yyyy";        // Date/Time format
 var maxrows = 7;                         // Max rows for selection box
 var maxfunc = 10;                        // Maximum number of function keys
 // -------------------------------------------
@@ -537,7 +537,11 @@ function setobject(pfx, txt, on) {
 function setimage(name, sfx) {
     var elem = document.getElementById(name);
     if (elem != undefined) {
-        elem.src = elem.src.replace(/\d\./, sfx + '.');
+        var n = elem.src.lastIndexOf(".");
+        if (n > 1) {
+            var src = elem.src.substr(0, n - 1) + sfx + elem.src.substr(n);
+            elem.src = src;
+        }
     }
     return elem;
 }
@@ -545,15 +549,13 @@ function setimage(name, sfx) {
 // -------------------------------------------
 // Get state of an object with id '<name>'
 function getobject(name) {
-    var state;
-    state = false;
+    var state = false;
     if (name != undefined) {
         var elem = document.getElementById(name);
         if (elem != undefined) {
-            var src = elem.src;
-            var n = src.lastIndexOf(".");
+            var n = elem.src.lastIndexOf(".");
             if (n > 1) {
-                if (src.charAt(n-1) != '0') {
+                if (elem.src.charAt(n-1) != '0') {
                     state = true;
                 }
             }
