@@ -1,3 +1,7 @@
 # Definition of locos on CAG Demo Layout
-1421,Class 142 Pacer|loco_pacer.png,128,Lights=0
-1422,Class 142 Pacer|loco_pacer.png,128,Lights=0
+1081,Class 108-1|loco_108,128,Lights=0
+1082,Class 108-2|loco_108,128,Lights=0
+1421,Class 142-1|loco_pacer,128,Lights=0
+1422,Class 142-2|loco_pacer,128,Lights=0
+1501,Class 150-1|loco_none,128,Lights=0
+1502,Class 150-2|loco_none,128,Lights=0
