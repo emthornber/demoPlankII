@@ -1,6 +1,7 @@
 #comms,192.168.0.200
 #comms,192.168.0.201
 #comms,com4
+comms,ttyACM0
 comms,ttyUSB0
 comms,com6
 comms,udp:5550

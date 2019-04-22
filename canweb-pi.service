@@ -1,0 +1,12 @@
+[Unit]
+Description=MERG CANWEB interface to CBUS
+After=graphical.target
+
+[Service]
+Type=forking
+User=pi
+ExecStart=/bin/sh -ec "cd /home/pi/Work/MERG-DEV/cagdemoCW ; ../canweb/canweb-pi cagdemo.csv & "
+
+[Install]
+WantedBy=graphical.target
+
