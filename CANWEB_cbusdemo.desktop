@@ -1,8 +1,8 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=cagdemo
-Comment=Start CANWEB using cagdemo configuration
-Exec=/home/pi/CANWEB_cagdemo.sh
+Comment=Start CANWEB using cbusdemo configuration
+Exec=/home/pi/CANWEB_cbusdemo.sh
 Icon=/home/pi/Work/MERG-DEV/canweb/canweb_icon.gif
 Terminal=false
 Type=Application
