@@ -1,5 +1,5 @@
 ﻿<!-- CANWEB CBUS Demo HTML
-	05 April, 2022 - E M Thornber
+	05 April 2022 - E M Thornber
 	Created from cbusdemo_index.html
 -->
 <!DOCTYPE html>
@@ -23,16 +23,16 @@
     // -------------------------------------------
 </script>
 <body>
-<div class="cont" style="width:800px;left:0px;top:0px;">
+<div class="cont" style="width:800px;left:0;top:0;">
     <div class="panl" style="height:480px;">
         <!-- The main track drawing -->
-        <img alt="Track Layout" class="pdwg" src="cbusdemoTrack.svg" style="left:0px;top:0px;">
+        <img alt="Track Layout" class="pdwg" src="cbusdemoTrack.svg" style="left:0;top:0;">
         <!-- Software version -->
         <div class="psys" id="sysvers" style="color:GhostWhite;left:605px;top:2px;font-size:12px;"></div>
         <!-- The system text can display the log -->
         <div class="psys" id="systext" style="left:5px;top:10px;height:420px;width:780px;"></div>
         <!-- The status box displays the time/date or connection status -->
-        <div class="ptxt" id="status" onclick="statusclick();" style="left:0px;top:420px;width:800px;height:40px;">
+        <div class="ptxt" id="status" onclick="statusclick();" style="left:0;top:420px;width:800px;height:40px;">
             Connecting...
         </div>
         <!-- Define layout control buttons -->
@@ -55,103 +55,67 @@
             <div class="sbut3"><b>Stop<br>All</b></div>
             <div class="sbut2"><img alt="All Locos stopped" id="a1" onclick="auxtoggle('1');" src="cwsbutr0.png"></div>
         </div>
-        <!-- TURNBACK -->
-        <!-- ToTI -->
-        <img alt="Track Circuit" title="ToTI N5E3" class="ptot" id="e5-3" onclick="simtoggle('5-3');" src="TrackCircuit0.svg"
-             style="left:   0px;top:180px;">
-        <img alt="Track Circuit" title="ToTI N5E3" class="ptot" id="e5-3a" onclick="simtoggle('5-3');" src="TrackCircuit0.svg"
-             style="left:  60px;top:180px;">
-        <img alt="Track Circuit" title="ToTI N5E3" class="ptot" id="e5-3b" onclick="simtoggle('5-3');" src="TrackCircuit0.svg"
-             style="left: 120px;top:180px;">
-        <!-- Shunt Limit -->
-        <img alt="Stop Board" title="Spot N5E3" class="ptot" id="e5-4" onclick="simtoggle('5-4');" src="StopBoard0.svg"
-             style="left: 0px;top:180px;">
-        <!-- Turnout Control -->
-        <img alt="101" class="pbkg" src="Turnout101.svg"
-             style="left:360px;top:0px;">
-        <img alt="Knob" title="Turnback" class="ptot" id="e1-1" onclick="sendtoggle('1-1');" src="Knob0.svg"
-             style="left:360px;top:0px;">
-        <img alt="Lamp" title="Turnback Normal"  class="ptot" id="e5-6a" onclick="simtoggle('66-8', '5-6');" src="Lamp0.svg"
-             style="left:360px;top:0px;">
-        <img alt="Lamp" title="Turnback Reverse" class="ptot" id="e5-5a" onclick="simtoggle('66-6', '5-5');" src="Lamp0.svg"
-             style="left:390px;top:0px;">
-        <!-- Turnout Feedback -->
-        <img alt="TurnoutWyeLeftGrey" class="pbkg" src="TurnoutWyeLeftGrey.svg"
-             style="left:180px;top:180px;">
-        <img alt="Wye Turnout" title="Turnout N1E1" class="ptot" id="e5-5" onclick="simtoggle('5-5');" src="TurnoutWyeLeftDn0.svg"
-             style="left: 180px;top:180px;">
-        <img alt="Wye Turnout" title="Turnout N1E1" class="ptot" id="e5-6" onclick="simtoggle('5-6');" src="TurnoutWyeLeftUp0.svg"
-             style="left: 180px;top:180px;">
-        <!-- Up Junction -->
-        <!-- ToTI -->
-        <img alt="Track Circuit" title="ToTI N5E2" class="ptot" id="e5-2" onclick="simtoggle('5-2');" src="TrackCircuit0.svg"
-             style="left: 240px;top:120px;">
-        <img alt="Track Circuit" title="ToTI N5E2" class="ptot" id="e5-2a" onclick="simtoggle('5-2');" src="TrackCircuit0.svg"
-             style="left: 300px;top:120px;">
-        <!-- Turnout Clipped OOU -->
-        <img alt="Wye Turnout" title="T/O OOU" class="ptot" src="TurnoutWyeRightDnWhite.svg"
-             style="width:60px;height:60px;left:180px;top:120px;">
-        <!-- Down Junction -->
-        <!-- ToTI -->
-        <img alt="Track Circuit" title="ToTI N5E1" class="ptot" id="e5-1" onclick="simtoggle('5-1');" src="TrackCircuit0.svg"
-             style="left: 240px;top:240px;">
-        <img alt="Track Circuit" title="ToTI N5E1" class="ptot" id="e5-1a" onclick="simtoggle('5-1');" src="TrackCircuit0.svg"
-             style="left: 300px;top:240px;">
-        <!-- Turnout Clipped OOU -->
-        <img alt="Wye Turnout" title="T/O OOU" class="ptot" src="TurnoutWyeRightUpWhite.svg"
-             style="width:60px;height:60px;left:180px;top:240px;">
-        <!-- STATION -->
-        <!-- Up ToTI -->
-        <img alt="Track Circuit" title="ToTI N6E2" class="ptot" id="e6-2" onclick="simtoggle('6-2');" src="TrackCircuit0.svg"
-             style="left: 360px;top:120px;">
-        <img alt="Track Circuit" title="ToTI N6E2" class="ptot" id="e6-2a" onclick="simtoggle('6-2');" src="TrackCircuit0.svg"
-             style="left: 420px;top:120px;">
-        <!-- Up Platform Stop -->
-        <img alt="Stop Board" title="Spot N6E3" class="ptot" id="e6-3" onclick="simtoggle('6-3');" src="StopBoard0.svg"
-             style="left: 420px;top:120px;">
-        <!-- Down ToTI -->
-        <img alt="Track Circuit" title="ToTI N6E1" class="ptot" id="e6-1" onclick="simtoggle('6-1');" src="TrackCircuit0.svg"
-             style="left: 360px;top:240px;">
-        <img alt="Track Circuit" title="ToTI N6E1" class="ptot" id="e6-1a" onclick="simtoggle('6-1');" src="TrackCircuit0.svg"
-             style="left: 420px;top:240px;">
-        <!-- Down Platform Stop -->
-        <img alt="Stop Board" title="Spot N6E4" class="ptot" id="e6-4" onclick="simtoggle('6-4');" src="StopBoard0.svg"
-             style="left: 360px;top:240px;">
-        <!-- Fiddle Yard -->
-        <!-- ToTI -->
-        <img alt="Track Circuit" title="ToTI N7E3" class="ptot" id="e7-3" onclick="simtoggle('7-3');" src="TrackCircuitSW0.svg"
-             style="left: 480px;top:120px;">
-        <img alt="Track Circuit" title="ToTI N7E3" class="ptot" id="e7-3a" onclick="simtoggle('7-3');" src="TrackCircuitNE0.svg"
-             style="left: 480px;top:180px;">
-        <img alt="Track Circuit" title="ToTI N7E3" class="ptot" id="e7-3b" onclick="simtoggle('7-3');" src="TrackCircuit0.svg"
-             style="left: 480px;top:240px;">
-        <img alt="Track Circuit" title="ToTI N7E3" class="ptot" id="e7-3c" onclick="simtoggle('7-3');" src="TrackCircuitSW0.svg"
-             style="left: 540px;top:180px;">
-        <img alt="Track Circuit" title="ToTI N7E3" class="ptot" id="e7-3d" onclick="simtoggle('7-3');" src="TrackCircuit0.svg"
+        <!-- UP -->
+        <!-- ToTI UA -->
+        <img alt="Track Circuit" title="ToTI N2011E10" class="ptot" id="e2011-10" onclick="simtoggle('2011-10');" src="TrackCircuit0.svg"
              style="left: 600px;top:240px;">
-        <img alt="Track Circuit" title="ToTI N7E3" class="ptot" id="e7-3e" onclick="simtoggle('7-3');" src="TrackCircuit0.svg"
-             style="left: 660px;top:240px;">
-        <img alt="Track Circuit" title="ToTI N7E3" class="ptot" id="e7-3f" onclick="simtoggle('7-3');" src="TrackCircuit0.svg"
-             style="left: 720px;top:240px;">
-        <!-- Shunt Limit -->
-        <img alt="Stop Board" title="Spot N7E3" class="ptot" id="e7-4" onclick="simtoggle('7-4');" src="StopBoard0.svg"
-             style="left: 720px;top:240px;">
-        <!-- Turnout Control -->
-        <img alt="102" class="pbkg" src="Turnout102.svg"
-             style="left:420px;top:0px;">
-        <img alt="Knob" title="Fiddleyard" class="ptot" id="e1-13" onclick="sendtoggle('1-13');" src="Knob0.svg"
-             style="left:420px;top:0px;">
-        <img alt="Lamp" title="Fiddleyard Normal"  class="ptot" id="e7-1a" onclick="simtoggle('66-48', '7-1');" src="Lamp0.svg"
-             style="left:420px;top:0px;">
-        <img alt="Lamp" title="Fiddleyard Reverse" class="ptot" id="e7-2a" onclick="simtoggle('66-46', '7-2');" src="Lamp0.svg"
-             style="left:450px;top:0px;">
-        <!-- Turnout Feedback -->
-        <img alt="TurnoutRightGrey" class="pbkg" src="TurnoutRightGrey.svg"
+        <img alt="Track Circuit" title="ToTI N2011E10" class="ptot" id="e2011-10a" onclick="simtoggle('2011-10');" src="TrackCircuit0.svg"
              style="left: 540px;top:240px;">
-        <img alt="Right Turnout" title="Turnout N1E13" class="ptot" id="e7-1" onclick="simtoggle('7-1');" src="TurnoutRightNormal0.svg"
-             style="left: 540px;top:240px;">
-        <img alt="Right Turnout" title="Turnout N1E13" class="ptot" id="e7-2" onclick="simtoggle('7-2');" src="TurnoutRightReverse0.svg"
-             style="left: 540px;top:240px;">
+        <img alt="Track Circuit" title="ToTI N2011E10" class="ptot" id="e2011-10b" onclick="simtoggle('2011-10');" src="TrackCircuit0.svg"
+             style="left: 480px;top:240px;">
+        <!-- ToTI UB -->
+        <img alt="Track Circuit" title="ToTI N2011E15" class="ptot" id="e2011-15" onclick="simtoggle('2011-10');" src="TrackCircuit0.svg"
+             style="left: 420px;top:240px;">
+        <img alt="Track Circuit" title="ToTI N2011E15" class="ptot" id="e2011-15a" onclick="simtoggle('2011-10');" src="TrackCircuit0.svg"
+             style="left: 300px;top:240px;">
+        <img alt="Track Circuit" title="ToTI N2011E15" class="ptot" id="e2011-15b" onclick="simtoggle('2011-10');" src="TrackCircuit0.svg"
+             style="left: 240px;top:240px;">
+        <img alt="Track Circuit" title="ToTI N2011E15" class="ptot" id="e2011-15c" onclick="simtoggle('2011-10');" src="TrackCircuit0.svg"
+             style="left: 180px;top:240px;">
+        <img alt="Track Circuit" title="ToTI N2011E15" class="ptot" id="e2011-15d" onclick="simtoggle('2011-10');" src="TrackCircuit0.svg"
+             style="left: 120px;top:240px;">
+        <!-- Crossover Control -->
+        <img alt="Crossover" class="pbkg" src="Crossover.svg"
+             style="left:420px;top:60px;">
+        <img alt="Knob" title="Crossover" class="ptot" id="e256-1a" onclick="sendbutton('256-1');" src="Knob0.svg"
+             style="left:420px;top:60px;">
+        <img alt="Lamp" title="Crossover Normal"  class="ptot" id="e256-1" onclick="simtoggle('256-1');" src="Lamp0.svg"
+             style="left:420px;top:60px;">
+        <img alt="Lamp" title="Crossover Reverse" class="ptot" id="e256-29" onclick="simtoggle('256-29');" src="Lamp0.svg"
+             style="left:450px;top:60px;">
+        <!-- Crossover Feedback -->
+        <img alt="TurnoutRightEastGrey" class="pbkg" src="TurnoutRightEastGrey.svg"
+             style="left:420px;top:300px;">
+        <img alt="Up Turnout Normal" title="Turnout N2011E14" class="ptot" id="e2011-14" onclick="simtoggle('2011-14');" src="TurnoutRightEastNormal0.svg"
+             style="left: 420px;top:300px;">
+        <img alt="Up Turnout Reverse" title="Turnout N2011E13" class="ptot" id="e2011-13" onclick="simtoggle('2011-13');" src="TurnoutRightEastReverse0.svg"
+             style="left: 420px;top:300px;">
+        <!-- DOWN -->
+        <!-- ToTI DA -->
+        <img alt="Track Circuit" title="ToTI N2011E16" class="ptot" id="e2011-16" onclick="simtoggle('2011-16');" src="TrackCircuit0.svg"
+             style="left: 120px;top:300px;">
+        <img alt="Track Circuit" title="ToTI N2011E16" class="ptot" id="e2011-16a" onclick="simtoggle('2011-16');" src="TrackCircuit0.svg"
+             style="left: 180px;top:300px;">
+        <img alt="Track Circuit" title="ToTI N2011E16" class="ptot" id="e2011-16b" onclick="simtoggle('2011-16');" src="TrackCircuit0.svg"
+             style="left: 240px;top:300px;">
+        <!-- ToTI DB -->
+        <img alt="Track Circuit" title="ToTI N2011E9" class="ptot" id="e2011-9" onclick="simtoggle('2011-9');" src="TrackCircuit0.svg"
+             style="left: 300px;top:300px;">
+        <img alt="Track Circuit" title="ToTI N2011E9" class="ptot" id="e2011-9a" onclick="simtoggle('2011-9');" src="TrackCircuit0.svg"
+             style="left: 420px;top:300px;">
+        <img alt="Track Circuit" title="ToTI N2011E9" class="ptot" id="e2011-9b" onclick="simtoggle('2011-9');" src="TrackCircuit0.svg"
+             style="left: 480px;top:300px;">
+        <img alt="Track Circuit" title="ToTI N2011E9" class="ptot" id="e2011-9c" onclick="simtoggle('2011-9');" src="TrackCircuit0.svg"
+             style="left: 540px;top:300px;">
+        <img alt="Track Circuit" title="ToTI N2011E9" class="ptot" id="e2011-9d" onclick="simtoggle('2011-9');" src="TrackCircuit0.svg"
+             style="left: 600px;top:300px;">
+        <!-- Crossover Feedback -->
+        <img alt="TurnoutRightWestGrey" class="pbkg" src="TurnoutRightWestGrey.svg"
+             style="left:420px;top:360px;">
+        <img alt="Down Turnout Normal" title="Turnout N2011E12" class="ptot" id="e2011-12" onclick="simtoggle('2011-12');" src="TurnoutRightWestNormal0.svg"
+             style="left: 420px;top:360px;">
+        <img alt="Down Turnout Reverse" title="Turnout N2011E11" class="ptot" id="e2011-11" onclick="simtoggle('2011-11');" src="TurnoutRightWestReverse0.svg"
+             style="left: 420px;top:360px;">
     </div>
     <!-- Throttle 1 ('x') -->
     <div class="throt">
